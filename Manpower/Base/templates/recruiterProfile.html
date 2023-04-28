@@ -1,0 +1,221 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Recruiter Profile | We Can Work 
+{% endblock %}
+
+{% block content %}
+
+  <div class='project-hero-container unep'>
+    <div class='project-hero wrapper columns'>
+      <div class='project-hero__info'>
+        ←&nbsp;&nbsp;
+        <a class='project-hero__portfolio-link u-underlined-hover-link' href="{% url 'jobshow' %}">Go back to all
+          job opennings</a>
+        <h1>{{recruiterProfiles.job_title}}</h1>
+        <div class='project-domains'>
+          <h2 class='project-domains__heading'>On Target Earnings</h2>
+          <div class='project-domains__item'>
+            <p>${{recruiterProfiles.salary_range}}</p>
+          </div>
+        </div>
+        <div class='project-domains'>
+          <h2 class='project-domains__heading'>Download the Job circular</h2>
+          <div class='project-domains__item'>
+            <a href="{% url 'download' pk=recruiterProfiles.pk %}">{{recruiterProfiles.job_title}} for {{recruiterProfiles.company_name}} (Download PDF)</a>
+          </div>
+        </div>
+
+
+
+
+        
+        <div class='project-domains'>
+          <h2 class='project-domains__heading'>About {{recruiterProfiles.company_name}}</h2>
+          <div class='project-domains__item'>
+            <p>{{recruiterProfiles.company_location}}</p>
+          </div>
+          <div class='project-domains__item'>
+            <p>{{recruiterProfiles.job_type}}</p>
+          </div>
+          <div class='project-domains__item'>
+            <p>Employees: {{recruiterProfiles.num_of_employees}}</p>
+          </div>
+        </div>
+        <div class='project-domains'>
+          <h2 class='project-domains__heading'>Contact</h2>
+          <div class='project-domains__item'>
+            <p>{{recruiterProfiles.company_phone}}</p>
+          </div>
+          <div class='project-domains__item' style="text-transform: lowercase;">
+            <p>{{recruiterProfiles.company_email}}</p>
+          </div>
+        </div>
+      </div>
+      <div class='project-hero__image'>
+
+        <span
+          data-alt="UNEP-WCMC - the specialist biodiversity assessment arm of the United Nations Environment Programme - World Conservation Monitoring Center (UNEP-WCMC)"
+          data-picture=""><span
+            data-src="{% static 'images/projects/main-screen-unep-5d81798e7f0e4c6ccceb981422943f796e0c0415c0b2c8a065f2f39cb385267a.jpg' %}"></span><span
+            data-src="{% static 'images/projects/mobile/main-screen-unep-952feb1e635b3e42cc44b8c297192476fdfa3094280e988ad5ea53437f1bca75.jpg' %}"></span><span
+            data-src="{% static 'images/projects/main-screen-unep-5d81798e7f0e4c6ccceb981422943f796e0c0415c0b2c8a065f2f39cb385267a.jpg' %}"
+            data-media="(min-width: 768px)"></span><noscript><img
+              alt="UNEP-WCMC - the specialist biodiversity assessment arm of the United Nations Environment Programme - World Conservation Monitoring Center (UNEP-WCMC)"
+              src="{% static 'images/projects/main-screen-unep-5d81798e7f0e4c6ccceb981422943f796e0c0415c0b2c8a065f2f39cb385267a.jpg' %}" /></noscript></span>
+      </div>
+    </div>
+  </div>
+  <section class='project-quote'>
+    <div class='testimonial-box project-quote__box'>
+      <p class='project-quote__author'>
+        <strong>About {{recruiterProfiles.company_name}} </strong>
+        <br>
+        <span>{{recruiterProfiles.company_description}}</span>
+      </p>
+      <br>
+    </div>
+  </section>
+  
+  <section class='project-goals wrapper vertical-padding'> 
+    <div class='columns'>
+      <div class='column'>
+        <h2 class='project-goals__heading'>Objectives of this Role</h2>
+        <ul class='project-goals-list'>
+          {% if recruiterProfiles.role_obj1 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.role_obj1}}</li>
+          {% endif %}
+          {% if recruiterProfiles.role_obj2 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.role_obj2}}</li>
+          {% endif %}
+          {% if recruiterProfiles.role_obj3 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.role_obj3}}</li>
+          {% endif %}
+          {% if recruiterProfiles.role_obj4 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.role_obj4}}</li>
+          {% endif %}
+          {% if recruiterProfiles.role_obj5 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.role_obj5}}</li>
+          {% endif %}
+          {% if recruiterProfiles.role_obj6 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.role_obj6}}</li>
+          {% endif %}
+          {% if recruiterProfiles.role_obj7 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.role_obj7}}</li>
+          {% endif %}
+          {% if recruiterProfiles.role_obj8 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.role_obj8}}</li>
+          {% endif %}
+          {% if recruiterProfiles.role_obj9 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.role_obj9}}</li>
+          {% endif %}
+          {% if recruiterProfiles.role_obj10 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.role_obj10}}</li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class='column'>
+        <h2 class='project-goals__heading'>Knowledge, Skills & Abilities</h2>
+        <ul class='project-goals-list'>
+          {% if recruiterProfiles.job_skills1 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.job_skills1}}</li>
+          {% endif %}
+          {% if recruiterProfiles.job_skills2 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.job_skills2}}</li>
+          {% endif %}
+          {% if recruiterProfiles.job_skills3 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.job_skills3}}</li>
+          {% endif %}
+          {% if recruiterProfiles.job_skills4 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.job_skills4}}</li>
+          {% endif %}
+          {% if recruiterProfiles.job_skills5 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.job_skills5}}</li>
+          {% endif %}
+          {% if recruiterProfiles.job_skills6 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.job_skills6}}</li>
+          {% endif %}
+          {% if recruiterProfiles.job_skills7 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.job_skills7}}</li>
+          {% endif %}
+          {% if recruiterProfiles.job_skills8 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.job_skills8}}</li>
+          {% endif %}
+          {% if recruiterProfiles.job_skills9 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.job_skills9}}</li>
+          {% endif %}
+          {% if recruiterProfiles.job_skills10 %}
+          <li class='project-goals-list__item'>{{recruiterProfiles.job_skills10}}</li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class='company-our-stats'>
+    <div class='wrapper'>
+      <h2 class='section-title'>
+        Qualifications
+      </h2>
+      <div class='columns'>
+        {% if recruiterProfiles.min_qua %}
+        <div class='column'>
+          <span class='stats-number' style="font-size: 40px;">
+            Minimum Qualifications
+          </span>
+          <span class='break-word stats-title'style="font-size: 18px;">
+            {{recruiterProfiles.min_qua}}
+          </span>
+        </div>
+        {% endif %}
+        {% if recruiterProfiles.pref_qua %}
+        <div class='column'>
+          <span class='stats-number' style="font-size: 40px;">
+            Preffered Qualifications
+          </span>
+          <span class='break-word stats-title'style="font-size: 18px;">
+            {{recruiterProfiles.pref_qua}}
+          </span>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <!-- <section class='project-flow-container'>
+    <div class='project-flow wrapper vertical-padding'>
+      <h2 class='project-flow__heading centered'>Flow of work</h2>
+      <div class='columns project-flow__steps'>
+        <div class='column project-flow__step'>
+          <div class='project-flow__step-number'>1</div>
+          <p class='project-flow__step-description'>Researching and spiking available CMS solutions to find the best
+            option to satisfy specific requirements</p>
+        </div>
+        <div class='column project-flow__step'>
+          <div class='project-flow__step-number'>2</div>
+          <p class='project-flow__step-description'>Incremental development of CMS capabilities and integration with the
+            existing website</p>
+        </div>
+        <div class='column project-flow__step'>
+          <div class='project-flow__step-number'>3</div>
+          <p class='project-flow__step-description'>Migrating the data from the old database and seamless launch of the
+            new solution</p>
+        </div>
+        <div class='column project-flow__step'>
+          <div class='project-flow__step-number'>4</div>
+          <p class='project-flow__step-description'>Prototyping the new map capabilities with various options to choose
+            the most suitable solution</p>
+        </div>
+        <div class='column project-flow__step'>
+          <div class='project-flow__step-number'>5</div>
+          <p class='project-flow__step-description'>Enhancing the site with spatial- and map-related features</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <section class='cta-box centered'>
+    <div class='cta-box-card'>
+      <h2>Let’s talk about your&nbsp;idea!</h2>
+      <a class="btn-round btn-primary" href="../contact.html">Contact us</a>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,85 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Developer Post Show | We Can Work 
+{% endblock %}
+
+{% block content %}
+
+  <div class='portfolio-wrapper wrapper'>
+    <div class='portfolio-intro centered'>
+      <h1 class='section-title'>
+        Brilliant Developers
+        <span class='break-word'>All Around South Korea</span>
+      </h1>
+      <div class='portfolio-legend'>
+        <div class='icons'>
+          <div class='icon-box web'>web</div>
+          <div class='icon-box mobile'>mobile</div>
+          <div class='icon-box design'>design</div>
+          <div class='icon-box tests'>testing</div>
+        </div>
+      </div>
+      <p class='page-intro'>
+        Search developers based on your preffered skills and experience
+      </p>
+      <form method="post">
+        <div class="wrap" >
+          <div class="search" style="width: 100%; position: relative; display: flex;">
+            {% csrf_token %}
+             <input type="text" class="searchTerm" name="searchquery" style="width: 100%;border: 3px solid #00B4CC;border-right: none;padding: 5px;height: 36px;border-radius: 5px 0 0 5px;outline: none;color: #9DBFAF;"  placeholder="What are you looking for?">
+             
+             <button type="submit" class="searchButton" style=" width: 80px;height: 36px; border: 1px solid #00B4CC;
+             background: #00B4CC;
+             text-align: center;
+             color: #fff;
+             border-radius: 0 5px 5px 0;
+             cursor: pointer;
+             font-size: 20px;">
+               <i class="fa fa-search">Search</i>
+            </button>
+          </div>
+       </div>
+      </form>
+    </div>
+   
+    <h2 class='section-subtitle centered'>List of developers</h2>
+     
+    <div class='portfolio-grid'>
+      {% for Developer in Developers %}
+      <div class='project-teaser-wrapper featured'>
+        <a class="project-teaser-link" href="{% url 'devProfile' pk=Developer.pk %}">
+          <div class='project-teaser'>
+            <div class='project-image-container aircasting-mobile'>
+              <img alt="AirCasting - an iOS and Android app for collaborative air pollution mapping"
+                src="{{Developer.image_file.url}}" />
+            </div>
+            <div class='project-teaser-box'>
+              <p class='teaser-name'>
+                {{Developer.first_name}} {{Developer.last_name}} 
+              </p>
+              <p class='see-details'>
+                See profile →
+              </p>
+            </div>
+          </div>
+        </a>
+        <div class='teaser-domains'>
+          <span class='teaser-domain-tag'>{{Developer.Speciality1}}</span>
+          <span class='teaser-domain-tag'>{{Developer.Languages1}}</span>
+        </div>
+        <h3 class='project-teaser-name'>
+          <a class="project-teaser-name__link" href="{% url 'devProfile' pk=Developer.pk %}">{{Developer.first_name}} {{Developer.last_name}} </a>
+        </h3>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <section class='cta-box centered'>
+    <div class='cta-box-card'>
+      <h2>Create your developer profile!</h2>
+      <a class="btn-round btn-primary" href="{% url 'dev post' %}">Contact us</a>
+    </div>
+  </section>
+
+{% endblock %}

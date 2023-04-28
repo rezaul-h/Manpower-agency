@@ -1,0 +1,23 @@
+2 type of roles:
+    Employee
+        1. Sign up and sign in
+        2. create and edit profile
+        3. see job opennings
+        4. see employee profiles
+        5. search job oppenings and employee profiles
+        6. contact
+
+    Recruiter:
+        1. Sign up and sign in
+        2. create and edit job circular
+        3. see job opennings
+        4. see employee profiles
+        5. search job oppenings and employee profiles
+        6. contact
+
+Notice Board:
+    1. Admin can create, update, and delete news of jobs and Recruitement
+Service
+Company
+Contact
+

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Services | We Can Work
+{% endblock %}
+
+{% block content %}
+
+<section class='service-header centered'>
+  <div class='service-intro-wrapper wrapper'>
+    <h1 class='service-category-title'>How we work</h1>
+    <h2 class='section-title'>Collaborating to create effective solutions for <br /> your recruitment needs</h2>
+  </div>
+  <div class='service-index-image'></div>
+</section>
+<div class='service-teasers-container'>
+  <div class='wrapper columns'>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'dev post' %}">
+        <div class='work-area-icon strategy'></div>
+        <p>
+          Check more about
+          <br>
+          <span class='service-teaser-title'>Create Profile</span>
+        </p>
+      </a>
+    </div>
+
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'jobshow' %}">
+        <div class='work-area-icon design'></div>
+        <p>
+          Check more about
+          <br>
+          <span class='service-teaser-title'>Show Oppenings</span>
+        </p>
+      </a>
+    </div>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'devshow' %}">
+        <div class='work-area-icon development'></div>
+        <p>
+          Check more about
+          <br>
+          <span class='service-teaser-title'>See Developer Profiles</span>
+        </p>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<section class='wrapper vertical-padding horizontal-padding'>
+  <div class='how-we-work-desc'>
+    <p class='p-paragraph'>At WE CAN WORK, we take a user-centric approach to our services, prioritizing user experience and ensuring that our platform is intuitive, user-friendly, and easy to navigate. We understand the unique challenges faced by both recruiters and developers, and use our expertise to create solutions that meet their needs.
+    </p>
+  </div>
+  <blockquote class='quote-interruption'>
+    <p class='quote-interruption-content'>"We believe that meaningful work is a key ingredient in a fulfilling life, and we are proud to offer a platform that enables talented individuals to connect with the right opportunities. Our ultimate goal is to create a community where talent can thrive, and where recruiters can find the perfect match for their hiring needs."</p>
+    <p class='quote-author'> <strong>Jaehyeok Lee, CEO, We Can Work</strong></p>
+  </blockquote>
+  <div class='how-we-work-desc'>
+    <p class='p-paragraph'>Whether you're a recruiter looking to streamline your hiring process or a developer looking for your next opportunity, WE CAN WORK has the tools and resources you need to succeed. Join our community today and find your perfect match!
+    </p>
+  </div>
+</section>
+<div class='service-teasers-container'>
+  <div class='wrapper columns'>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'dev post' %}">
+        <p>
+          Check more about
+          <span class='service-teaser-title break-word'>Create Profile</span>
+        </p>
+      </a></div>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'jobshow' %}">
+        <p>
+          Check more about
+          <span class='service-teaser-title break-word'>Show Oppenings</span>
+        </p>
+      </a></div>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'devshow' %}">
+        <p>
+          Check more about
+          <span class='service-teaser-title break-word'>See Developer Profiles</span>
+        </p>
+      </a></div>
+  </div>
+</div>
+<section class='cta-box service-action centered'>
+  <div class='cta-box-card'>
+    <h2>Let’s talk about your&nbsp;idea!</h2>
+    <a class="btn-round btn-primary" href="{% url 'Contact' %}">Contact us</a>
+  </div>
+</section>
+{% endblock %}

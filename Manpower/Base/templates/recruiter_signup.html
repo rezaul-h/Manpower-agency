@@ -1,0 +1,59 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Recruiter Sign Up | We Can Work 
+{% endblock %}
+
+{% block content %}
+
+  <section class='contact-page vertical-padding'>
+    <div class='contact-box'>
+      <h3 class='section-title contact-title'>Become a Member of Our Recruiter Network: Sign Up Now</h3>
+      <div class='js-contact-wrapper contact-form-column'>
+        <img alt="Agata" class="contact-photo"
+          src="{% static 'images/We Can Work_Logo.png' %}" />
+        <div class='success contact-success hide-success'>
+          <div class='success-image'></div>
+          <div class='success-message'>
+            <p>Thank you for registering as Recruiter.</p>
+            <p>Log in with you email and password to create your Recruiter profile</p>
+            <a class='btn-round btn-primary hero-contact' href="{% url 'recruiterSignin'%}">Sign in</a>
+          </div>
+        </div>
+        <form class="contact-form" id="new_contact_form" accept-charset="UTF-8"
+          data-remote="true" method="POST"><input name="utf8" type="hidden" value="&#x2713;" />
+          {% csrf_token %}
+          <div class='input-wrapper'>
+            <input class='flying-label-input' id='contact-name' name='developer_name' required='true' type='text'>
+            <label class='flying-label' for='contact-name'>Full Name</label>
+          </div>
+          <div class='input-wrapper'>
+            <input class='flying-label-input' id='contact-name' name='developer_username' required='true' type='text'>
+            <label class='flying-label' for='contact-name'>User Name</label>
+          </div>
+          <div class='input-wrapper'>
+            <input class='flying-label-input' id='contact-email' name='developer_email' required='true'
+              type='email'>
+            <label class='flying-label' for='contact-email'>E-mail</label>
+          </div>
+          <div class='input-wrapper'>
+            <input class='flying-label-input' id='contact-email' name='developer_password' required='true'
+              type='text'>
+            <label class='flying-label' for='contact-email'>Password</label>
+          </div>
+
+          <div class='contact-form-action'>
+            <input class='btn-round btn-primary' data-disable-with='Send message' type='submit' value='Sign Up'>
+          </div>
+        </form>
+        <div style="display: flex;align-items: center;padding-top: 50px;width: 50%; margin: 0 auto;">
+          <p style="margin-right: 10px;">Already have an Recruiter account? </p>
+          <a href="{% url 'recruiterSignin' %}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 10px;" onmouseover="this.style.backgroundColor='#0062cc';"
+          onmouseout="this.style.backgroundColor='#007bff';">Login!</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  {% endblock %}

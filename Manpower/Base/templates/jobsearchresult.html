@@ -1,0 +1,85 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Job Results | We Can Work 
+{% endblock %}
+
+{% block content %}
+
+  <div class='portfolio-wrapper wrapper'>
+    <div class='portfolio-intro centered'>
+      <h1 class='section-title'>
+        <span class='break-word'>Search Results</span>
+      </h1>
+      <div class='portfolio-legend'>
+        <div class='icons'>
+          <div class='icon-box web'>web</div>
+          <div class='icon-box mobile'>mobile</div>
+          <div class='icon-box design'>design</div>
+          <div class='icon-box tests'>testing</div>
+        </div>
+      </div>
+      <form method="post">
+        <div class="wrap" >
+          <div class="search" style="width: 100%; position: relative; display: flex;">
+            {% csrf_token %}
+             <input type="text" class="searchTerm" name="searchquery" style="width: 100%;border: 3px solid #00B4CC;border-right: none;padding: 5px;height: 36px;border-radius: 5px 0 0 5px;outline: none;color: #9DBFAF;"  placeholder="What are you looking for?">
+             
+             <button type="submit" class="searchButton" style=" width: 80px;height: 36px; border: 1px solid #00B4CC;
+             background: #00B4CC;
+             text-align: center;
+             color: #fff;
+             border-radius: 0 5px 5px 0;
+             cursor: pointer;
+             font-size: 20px;">
+               <i class="fa fa-search">Search</i>
+            </button>
+          </div>
+       </div>
+      </form>
+    </div>
+    <div class='portfolio-grid'>
+      {% for Jobdata in results %}
+      <div class='project-teaser-wrapper featured'>
+        <a class="project-teaser-link" href="{% url 'circular' pk=Jobdata.pk %}">
+          <div class='project-teaser'>
+            <div class='project-image-container aircasting-mobile'>
+              <img alt="AirCasting - an iOS and Android app for collaborative air pollution mapping"
+                src="{% static 'images/projects/teasers/teaser-aircasting-mobile-e41e4b9732d115d824209a8cd1c459207af7f456962e088eaf3d57f8ab07b1c5.jpg' %}" />
+            </div>
+            <div class='project-teaser-box'>
+              <p class='teaser-name' style="font-size:20px">
+                {{Jobdata.company_name}} hiring <strong>{{Jobdata.job_title}}</strong> 
+              </p>
+              <p class='see-details'>
+                See job circular details →
+              </p>
+            </div>
+          </div>
+        </a>
+        <div class='teaser-domains'>
+          <span class='teaser-domain-tag'>{{Jobdata.job_type}}</span>
+          <span class='teaser-domain-tag'>{{Jobdata.company_location}}</span>
+          <span class='teaser-domain-tag'>{{Jobdata.deadline}}</span>
+        </div>
+        <h3 class='project-teaser-name'>
+          <a class="project-teaser-name__link" href="{% url 'circular' pk=Jobdata.pk %}">{{Jobdata.job_title}}</a>
+        </h3>
+        <h4>
+          Posted by:
+          <span class='accent'>
+            {{Jobdata.company_name}}
+          </span>
+        </h4>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <section class='cta-box centered'>
+    <div class='cta-box-card'>
+      <h2>Let’s talk about your&nbsp;idea!</h2>
+      <a class="btn-round btn-primary" href="contact.html">Contact us</a>
+    </div>
+  </section>
+
+{% endblock %}

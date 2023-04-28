@@ -1,0 +1,381 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Home Page | We Can Work
+{% endblock %}
+
+{% block content %}
+<!-- Intro section -->
+<section class='hero-section'>
+  <div class='illu-container-paper-plane'></div>
+  <div class='illu-container-developer-standing'></div>
+  <div class='illu-container-developers-desk'></div>
+  <div class='illu-container-moon-rocket'></div>
+  <h3 class='hero-title'>
+    <span class='h-block'>Revolutionize Your Recruitment Process with</span>
+    <span class='h-block'>WE CAN WORK!</span>
+  </h3>
+  <div class='section-subtitle hero-subtitle'>
+    <h1 class='subtitle-h1'>Our platform connects talented developers with top recruiters, </h1>
+    <p>providing a seamless and efficient hiring process.</p>
+  </div>
+  <a class='btn-round btn-primary hero-contact' href="{% url 'jobshow'%}">Find Job</a>
+  <div class='white-wave-container'></div>
+</section>
+<!-- 2nd intro -->
+<section class='wrapper work-areas-section vertical-padding'>
+  <div class='horizontal-padding centered'>
+    <h3 class='section-title'>
+      <span class='h-block'>We Can Work: Streamlining the Recruitment Process for </span>
+      <span class='h-block'>Recruiters and Developers</span>
+    </h3>
+
+    <p class='section-subtitle technologies-desc'>
+      Our cutting-edge web-based platform connects recruiters with top talent and developers with the best job
+      opportunities. With features like job postings, resume reviews, and messaging, we make recruitment a breeze.
+    </p>
+    <p class='section-subtitle technologies-desc'>
+      Our user-friendly interface and responsive design ensure easy access from any device, while our secure coding
+      practices protect user data. And with scalability at our core, we guarantee optimal performance and minimal
+      downtime, even with high volumes. Experience the difference in recruitment with WE CAN WORK. Join us today.
+    </p>
+  </div>
+  <div class='columns'>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="">
+        <div class='work-area-icon strategy'></div>
+        <div>
+          <h3>Services</h3>
+          <p class='work-area-tags'>Comprehensive and personalized job matching</p>
+          <p class='work-area-tags'>Streamlined recruitment process</p>
+          <p class='work-area-tags'>Global opportunities</p>
+        </div>
+      </a></div>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="">
+        <div class='work-area-icon design'></div>
+        <div>
+          <h3>Our Team</h3>
+          <p class='work-area-tags'>Experienced professionals</p>
+          <p class='work-area-tags'>Passionate about people</p>
+          <p class='work-area-tags'>Customer-focused</p>
+        </div>
+      </a></div>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="">
+        <div class='work-area-icon development'></div>
+        <div>
+          <h3>Why Choose Us</h3>
+          <p class='work-area-tags'>Advanced technology</p>
+          <p class='work-area-tags'>Personalized approach</p>
+          <p class='work-area-tags'>Trustworthy and reliable</p>
+        </div>
+      </a></div>
+  </div>
+</section>
+<!-- Featured Jobs -->
+<section class='technologies-we-use technologies-we-use--has-bg centered vertical-padding'>
+  <div class='team-header'>
+    <h1 class='section-title'>
+      Featured
+      <span class='accent'>Job Openings</span>
+    </h1>
+    <div class='centered'>
+      <p class='page-intro'>
+        Find Your Next Career Move Today!
+      </p>
+    </div>
+  </div>
+  <div class='portfolio-grid'>
+    {% for Jobdata in Jobdatas %}
+    <div class='project-teaser-wrapper featured'>
+      <a class="project-teaser-link" href="{% url 'circular' pk=Jobdata.pk %}">
+        <div class='project-teaser'>
+          <div class='project-image-container aircasting-mobile'>
+            <img alt="AirCasting - an iOS and Android app for collaborative air pollution mapping"
+              src="{% static 'images/projects/teasers/teaser-aircasting-mobile-e41e4b9732d115d824209a8cd1c459207af7f456962e088eaf3d57f8ab07b1c5.jpg' %}" />
+          </div>
+          <div class='project-teaser-box'>
+            <p class='teaser-name' style="font-size:20px">
+              {{Jobdata.company_name}} hiring <strong>{{Jobdata.job_title}}</strong> 
+            </p>
+            <p class='see-details'>
+              See job circular details →
+            </p>
+          </div>
+        </div>
+      </a>
+      <div class='teaser-domains'>
+        <span class='teaser-domain-tag'>{{Jobdata.job_type}}</span>
+        <span class='teaser-domain-tag'>{{Jobdata.company_location}}</span>
+        <span class='teaser-domain-tag'>{{Jobdata.deadline}}</span>
+      </div>
+      <h3 class='project-teaser-name'>
+        <a class="project-teaser-name__link" href="{% url 'circular' pk=Jobdata.pk %}">{{Jobdata.job_title}}</a>
+      </h3>
+      <h4>
+        Posted by:
+        <span class='accent'>
+          {{Jobdata.company_name}}
+        </span>
+      </h4>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<!-- Developer Section -->
+<section class='technologies-we-use technologies-we-use--has-bg centered vertical-padding'>
+  <div class='team-header'>
+    <h1 class='section-title'>
+      Meet
+      <span class='accent'>the Developers</span>
+    </h1>
+    <div class='centered'>
+      <p class='page-intro'>
+        Meet Our Brilliant Developers: Innovators, Creators, and Problem Solvers!
+      </p>
+    </div>
+  </div>
+  <div class='portfolio-grid'>
+    {% for Developer in Developers %}
+    <div class='project-teaser-wrapper featured'>
+      <a class="project-teaser-link" href="{% url 'devProfile' pk=Developer.pk %}">
+        <div class='project-teaser'>
+          <div class='project-image-container aircasting-mobile'>
+            <img alt="AirCasting - an iOS and Android app for collaborative air pollution mapping"
+              src="{{Developer.image_file.url}}" />
+          </div>
+          <div class='project-teaser-box'>
+            <p class='teaser-name'>
+              {{Developer.first_name}} {{Developer.last_name}} 
+            </p>
+            <p class='see-details'>
+              See profile →
+            </p>
+          </div>
+        </div>
+      </a>
+      <div class='teaser-domains'>
+        <span class='teaser-domain-tag'>{{Developer.Speciality1}}</span>
+        <span class='teaser-domain-tag'>{{Developer.Languages1}}</span>
+      </div>
+      <h3 class='project-teaser-name'>
+        <a class="project-teaser-name__link" href="{% url 'devProfile' pk=Developer.pk %}">{{Developer.first_name}} {{Developer.last_name}} </a>
+      </h3>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<!-- 
+
+<section class='about-us-section'>
+  <div class='team-header'>
+    <h1 class='section-title'>
+      Meet
+      <span class='accent'>the Developers</span>
+    </h1>
+    <div class='centered'>
+      <p class='page-intro'>
+        Meet Our Brilliant Developers: Innovators, Creators, and Problem Solvers!
+      </p>
+    </div>
+  </div>
+  {% for Developer in Developers %}
+  <div class='team-navigation team-navigation--top'>
+    <div class='team-navigation__list-item'>
+      <img alt="Kirill Getmanskii - Android Developer" class="team-navigation__photo"
+        src="{% static 'images/team/portraits_180/KirillGetmanskii-Android-f0f04c0df0958aa7fad9821f556615c6ee0291ca02a33220fc979f46dde15b57.jpg' %}" />
+    </div>
+  </div>
+  {% endfor %}
+
+  {% for Developer in Developers %}
+  <div class='team-slider-new'>
+    <div class='team-card'>
+      <div class='team-card__photo-wrapper'>
+        <img alt='Kirill Getmanskii - Android Developer' class='team-card__photo team-card__photo--desktop'
+          data-lazy="{{Developer.image_file.url}}">
+        <img alt='Kirill Getmanskii - Android Developer' class='team-card__photo team-card__photo--mobile'
+          data-lazy="{{Developer.image_file.url}}">
+      </div>
+      <div class='team-card__description'>
+        <h2 class='team-card__name'>{{Developer.first_name}} {{Developer.last_name}} </h2>
+        <p class='team-card__role'>Android Developer</p>
+        <div class='team-card__social'>
+        </div>
+        <p class='team-card__bio'>{{DeveloperProfiles.description}}</p>
+        <ul class='team-card__skillset'>
+          <li class='team-card__skill'>
+            <span class='team-card__skill-level' data-number='5'></span>
+            <span>Perseverance</span>
+          </li>
+          <li class='team-card__skill'>
+            <span class='team-card__skill-level' data-number='4'></span>
+            <span>Learning</span>
+          </li>
+          <li class='team-card__skill'>
+            <span class='team-card__skill-level' data-number='3'></span>
+            <span>Putting up a tent</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <div class='team-navigation team-navigation--bottom'>
+    <div class='team-navigation__list-item'>
+      <img alt='Kirill Getmanskii - Android Developer' class='team-navigation__photo'
+        data-lazy="{% static 'images/team/portraits_180/KirillGetmanskii-Android-f0f04c0df0958aa7fad9821f556615c6ee0291ca02a33220fc979f46dde15b57.jpg' %}">
+    </div>
+  </div>
+
+
+</section> -->
+<!-- About us -->
+<section class='about-us-section'>
+  <article class='about-us-article'>
+    <h2 class='section-title'>About us</h2>
+    <div class='column about-us-photo collaboration-photo is-left-aligned'></div>
+    <div class='column about-us-text is-left-aligned'>
+      <h3 class='section-title'>Our Mission</h3>
+      <p>
+        Our mission at We Can Work is to create a better world by connecting talented individuals with companies that
+        need them. As a recruitment startup, we specialize in helping domestic companies in Korea overcome their
+        challenges in hiring engineers by matching them with skilled professionals from around the world. Our vision is
+        to become the global leader in recruitment by providing excellent service that exceeds customer expectations.
+      </p>
+      <a class="about-us-link" href="{% url 'Company' %}">Get to know us</a>
+    </div>
+  </article>
+  <article class='about-us-article'>
+    <div class='column about-us-photo transparency-photo is-right-aligned'></div>
+    <div class='column about-us-text is-right-aligned'>
+      <h3 class='section-title'>Looking for a job?</h3>
+      <p>
+        For those looking for a job, we offer customized job postings that take into account your work experience,
+        skills, areas of interest, and contract terms. We also provide options for both in-person work in Korea and
+        remote work in your home country, along with assistance with securing visas and employment agreements.
+      </p>
+      <a class="about-us-link" href="{% url 'dev post' %}">Create developer profile</a>
+    </div>
+  </article>
+  <article class='about-us-article'>
+    <div class='column about-us-photo outcome-photo is-left-aligned'></div>
+    <div class='column about-us-text is-left-aligned'>
+      <h3 class='section-title'>Seeking for a developer?</h3>
+      <p>
+        For companies seeking talented developers, we introduce only verified engineers through local HR staff, offering
+        a simple and fast recruitment process without the need for membership registration. We provide options for
+        full-time, project-based contract and dispatch, as well as remote work contract conclusion.
+      </p>
+      <a class="about-us-link" href="{% url 'Job Post' %}">Post job oppening</a>
+    </div>
+  </article>
+  <article class='about-us-article'>
+    <div class='column about-us-photo collaboration-photo is-right-aligned'></div>
+    <div class='column about-us-text is-right-aligned'>
+      <h3 class='section-title'>Issuing visas through professional administrators</h3>
+      <p>
+        Our workflow is designed to be efficient and hassle-free, with a streamlined recruitment process that includes
+        job registration, job/developer search, scheduling interviews, and administrative support such as drafting
+        employment contracts and issuing visas through professional administrators. Join We Can Work today and discover
+        the joy of work.
+      </p>
+      <a class="about-us-link" href="{% url 'service' %}">Get to know us</a>
+    </div>
+  </article>
+</section>
+
+<!-- News -->
+<section class='technologies-we-use technologies-we-use--has-bg centered vertical-padding'>
+  <div class='team-header'>
+    <h1 class='section-title'>
+      Get the 
+      <span class='accent'>Latest News</span>
+    </h1>
+    <div class='centered'>
+      <p class='page-intro'>
+        Check our notice board to stay up-to-date about job postings.
+      </p>
+    </div>
+  </div>
+  <div class='portfolio-wrapper wrapper'>
+    <div class='portfolio-grid'>
+      {% for newslist in newslists %}
+      <div class='project-teaser-wrapper featured'>
+        <a class="project-teaser-link" href="{% url 'singlenews' pk=newslist.pk %}">
+          <div class='project-teaser'>
+            <div class='project-image-container aircasting-mobile'>
+              <img alt="AirCasting - an iOS and Android app for collaborative air pollution mapping"
+                src="{{newslist.newsimage.url}}"/>
+            </div>
+            <div class='project-teaser-box'>
+              <p class='teaser-name' style="font-size:20px">
+                {{newslist.headline}} 
+              </p>
+              <p class='see-details'>
+                See the details →
+              </p>
+            </div>
+          </div>
+        </a>
+        <div class='teaser-domains'>
+          <span class='teaser-domain-tag'>{{newslist.tags}}</span>
+          <span class='teaser-domain-tag'>{{newslist.Date}}</span>
+        </div>
+        <h3 class='project-teaser-name'>
+          <a class="project-teaser-name__link" href="{% url 'singlenews' pk=newslist.pk %}">{{newslist.headline}}</a>
+        </h3>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Contact us -->
+<section class='contact-section vertical-padding' id='contact-us'>
+  <div class='contact-box'>
+    <h3 class='section-title contact-title'>If you have any questions, feedback or inquiries, please don't hesitate to
+      contact us.</h3>
+    <div class='js-contact-wrapper contact-form-column'>
+      <img alt="Agata" class="contact-photo" src="{% static 'images/ceo.png' %}" />
+      <p>
+        Drop a message at
+        <a href="jaehyeok.wcw@gmail.com">jaehyeok.wcw@gmail.com</a>
+      </p>
+      <div class='success contact-success hide-success'>
+        <div class='success-image'></div>
+        <div class='success-message'>
+          <p>Thank you for contacting us.</p>
+          <p>We usually reply within 24 hours.</p>
+        </div>
+      </div>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+      {% endfor %}
+      {% endif %}
+      <form class="contact-form" id="new_contact_form" action="{% url 'Contact' %}" accept-charset="UTF-8"
+        data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+        {% csrf_token %}
+        <div class='input-wrapper'>
+          <input class='flying-label-input' id='contact-name' name='contact_form_name' required='true' type='text'>
+          <label class='flying-label' for='contact-name'>Name</label>
+        </div>
+        <div class='input-wrapper'>
+          <input class='flying-label-input' id='contact-email' name='contact_form_email' required='true' type='email'>
+          <label class='flying-label' for='contact-email'>E-mail</label>
+        </div>
+        <div class='input-wrapper'>
+          <textarea class='flying-label-input' id='contact-message' name='contact_form_body' required='true'></textarea>
+          <label class='flying-label textarea-label' for='contact-message'>Message</label>
+        </div>
+        <div class='contact-form-action'>
+          <input class='btn-round btn-primary' data-disable-with='Send message' type='submit' value='Send message'>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</section>
+{% endblock %}

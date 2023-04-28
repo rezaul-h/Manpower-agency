@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Developer Profile | We Can Work
+{% endblock %}
+
+{% block content %}
+
+<div class='project-hero-container philips'>
+  <div class='project-hero wrapper columns'>
+    <div class='project-hero__info'>
+      ←&nbsp;&nbsp;
+      <a class='project-hero__portfolio-link u-underlined-hover-link' href="{% url 'devshow' %}">Go back to all
+        all developer list</a>
+      <h1> {{DeveloperProfiles.first_name}} {{DeveloperProfiles.last_name}} </h1>
+      <!-- Contact -->
+      <div class='project-domains'>
+        <h2 class='project-domains__heading'>Contact information</h2>
+        <div class='project-domains__item'>
+          <a href="tel:{{DeveloperProfiles.phone_number}}">{{DeveloperProfiles.phone_number}}</a>
+        </div>
+        <div class='project-domains__item' style="text-transform: lowercase;">
+          <a href="mailto:{{DeveloperProfiles.email}}">{{DeveloperProfiles.email}}</a>
+        </div>
+      </div>
+      <!-- Social media -->
+      <div class='project-domains'>
+        <h2 class='project-domains__heading'>Social media</h2>
+        <div class='project-domains__item'>
+          <a href="{{DeveloperProfiles.linkedin_link}}">Linkedin</a>
+        </div>
+        <div class='project-domains__item'>
+          <a href="{{DeveloperProfiles.github_link}}">GitHub</a>
+        </div>
+      </div>
+      <div class='project-hero__description'>
+        <p>{{DeveloperProfiles.description}}</p>
+      </div>
+    </div>
+    <div class='project-hero__image'>
+
+
+      <span data-alt="ActiveLink - a wearable device for monitoring sleep and activity." data-picture=""><span
+          data-src="{{DeveloperProfiles.image_file.url}}"></span><span
+          data-src="{{DeveloperProfiles.image_file.url}}"></span><span data-src="{{DeveloperProfiles.image_file.url}}"
+          data-media="(min-width: 768px)"></span><noscript><img
+            alt="ActiveLink - a wearable device for monitoring sleep and activity."
+            src="{{DeveloperProfiles.image_file.url}}" /></noscript></span>
+    </div>
+  </div>
+</div>
+
+<section class='project-quote'>
+  <div class='testimonial-box project-quote__box'>
+    <p class='project-quote__author'>
+      <strong>Bechelors Information</strong>
+      <br>
+      <span>{{DeveloperProfiles.institute1}}, {{DeveloperProfiles.degree1}}</span>
+      <br>
+      <span>Session: {{DeveloperProfiles.duration1}}</span>
+      <br>
+      <span>
+        CGPA (Out of 4.00): {{DeveloperProfiles.result1}}
+      </span>
+    </p>
+    <br>
+    <p class='project-quote__author'>
+      <strong>Master's Information</strong>
+      <br>
+      <span>{{DeveloperProfiles.institute2}}, {{DeveloperProfiles.degree2}}</span>
+      <br>
+      <span>Session: {{DeveloperProfiles.duration2}}</span>
+      <br>
+      <span>
+        CGPA (Out of 4.00): {{DeveloperProfiles.result2}}
+      </span>
+    </p>
+    <br>
+    <p class='project-quote__author'>
+      <strong>Download {{DeveloperProfiles.first_name}}'s CV</strong>
+      <br>
+      <span>
+        <div class='project-domains__item'>
+        
+          <a href="{% url 'download' pk=DeveloperProfiles.pk %}">Download PDF</a>
+        </div>
+      </span>
+    </p>
+  </div>
+</section>
+
+
+<section class='project-goals wrapper vertical-padding'>
+  <h2 class='project-goals__heading'>Skills</h2>
+  <div class='columns'>
+    <div class='column'>
+      <ul class='project-goals-list'>
+        <li class='project-goals-list__item'><strong>Speciality:</strong> {{DeveloperProfiles.Speciality1}},{{DeveloperProfiles.Speciality2}},{{DeveloperProfiles.Speciality2}},{{DeveloperProfiles.Speciality4}}</li>
+        <li class='project-goals-list__item'><strong>Languages: </strong> {{DeveloperProfiles.Languages1}},{{DeveloperProfiles.Languages2}},{{DeveloperProfiles.Languages3}},{{DeveloperProfiles.Languages4}}</li>
+        <li class='project-goals-list__item'><strong>Tools: </strong> {{DeveloperProfiles.Tools1}},{{DeveloperProfiles.Tools2}},{{DeveloperProfiles.Tools3}},{{DeveloperProfiles.Tools4}}</li>
+        <li class='project-goals-list__item'><strong>Interpersonal:</strong> {{DeveloperProfiles.Interpersonal1}},{{DeveloperProfiles.Interpersonal2}},{{DeveloperProfiles.Interpersonal3}},{{DeveloperProfiles.Interpersonal4}}</li>
+      </ul>
+      <div class='project-details'>
+        <h2 class='project-goals__heading'>Extracurricular Activities</h2>
+        
+        <div class='project-details__tag'>{{DeveloperProfiles.Activities1}}
+          <!-- <a href="{{DeveloperProfiles.Certifications1link}}">{{DeveloperProfiles.Activities1}}</a> -->
+        </div>
+        
+        <div class='project-details__tag'>{{DeveloperProfiles.Activities2}}
+          <!-- <a href="{{DeveloperProfiles.Certifications2link}}">{{DeveloperProfiles.Activities1}}</a> -->
+        </div>
+        
+        <div class='project-details__tag'>{{DeveloperProfiles.Activities3}}
+          <!-- <a href="{{DeveloperProfiles.Certifications3link}}"></a> -->
+        </div>
+
+        <div class='project-details__tag'>{{DeveloperProfiles.Activities4}}
+          <!-- <a href="{{DeveloperProfiles.Certifications3link}}"></a> -->
+        </div>
+      </div>
+    </div>
+    <div class='column'>
+      <div class='project-details'>
+        <h2 class='project-goals__heading'>Research Works</h2>
+        
+        <div class='project-details__tag'>
+          <a href="https://doi.org/{{DeveloperProfiles.paper1doi}}">{{DeveloperProfiles.paper1name}}</a>
+        </div>
+        
+        <div class='project-details__tag'>
+          <a href="https://doi.org/{{DeveloperProfiles.paper2doi}}">{{DeveloperProfiles.paper2name}}</a>
+        </div>
+        
+        <div class='project-details__tag'>
+          <a href="https://doi.org/{{DeveloperProfiles.paper3doi}}">{{DeveloperProfiles.paper3name}}</a>
+        </div>
+      </div>
+      <div class='project-details'>
+        <h2 class='project-goals__heading'>Certifications</h2>
+        
+        <div class='project-details__tag'>
+          <a href="{{DeveloperProfiles.Certifications1link}}">{{DeveloperProfiles.Certifications1name}}</a>
+        </div>
+        
+        <div class='project-details__tag'>
+          <a href="{{DeveloperProfiles.Certifications2link}}">{{DeveloperProfiles.Certifications2name}}</a>
+        </div>
+        
+        <div class='project-details__tag'>
+          <a href="{{DeveloperProfiles.Certifications3link}}">{{DeveloperProfiles.Certifications3name}}</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class='company-our-stats'>
+  <div class='wrapper'>
+    <h2 class='section-title'>
+      Work Experience
+    </h2>
+    <div class='columns'>
+      <div class='column'>
+        <span class='stats-number' style="font-size: 20px;">
+          {{DeveloperProfiles.company1}}, {{DeveloperProfiles.position1}} 
+        </span>
+        <span class='break-word stats-title'style="font-size: 15px;">
+                 
+        </span>
+        <span class='break-word stats-title'style="font-size: 15px;">
+          Duration: {{DeveloperProfiles.start1}}-{{DeveloperProfiles.end1}}
+        </span>
+        <span class='break-word stats-title'style="font-size: 15px;">
+          <ul class='project-goals-list'>
+            <li class='project-goals-list__item' style="text-align: left;">1</li>
+            <li class='project-goals-list__item' style="text-align: left;">2</li>
+            <li class='project-goals-list__item' style="text-align: left;">3</li>
+            <li class='project-goals-list__item' style="text-align: left;">4</li>
+          </ul>
+        </span>
+      </div>
+      <div class='column'>
+        <span class='stats-number' style="font-size: 20px;">
+          {{DeveloperProfiles.company2}}, {{DeveloperProfiles.position2}} 
+        </span>
+        <span class='break-word stats-title'style="font-size: 15px;">
+                 
+        </span>
+        <span class='break-word stats-title'style="font-size: 15px;">
+          Duration: {{DeveloperProfiles.start2}}-{{DeveloperProfiles.end2}}
+        </span>
+        <span class='break-word stats-title'style="font-size: 15px;">
+          <ul class='project-goals-list'>
+            <li class='project-goals-list__item' style="text-align: left;">1</li>
+            <li class='project-goals-list__item' style="text-align: left;">2</li>
+            <li class='project-goals-list__item' style="text-align: left;">3</li>
+            <li class='project-goals-list__item' style="text-align: left;">4</li>
+          </ul>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='project-flow-container'>
+  <div class='project-flow wrapper vertical-padding'>
+    <h2 class='project-flow__heading centered'>Major projects</h2>
+    <div class='columns project-flow__steps'>
+      <div class='column project-flow__step'>
+        <div class='project-flow__step-number'>1</div>
+        <p class='project-flow__step-description'><strong>{{DeveloperProfiles.project1name}}</strong> {{DeveloperProfiles.project1desc}}</p>
+      </div>
+      <div class='column project-flow__step'>
+        <div class='project-flow__step-number'>2</div>
+        <p class='project-flow__step-description'><strong>{{DeveloperProfiles.project2name}}</strong> {{DeveloperProfiles.project2desc}}</p>
+      </div>
+      <div class='column project-flow__step'>
+        <div class='project-flow__step-number'>3</div>
+        <p class='project-flow__step-description'><strong>{{DeveloperProfiles.project3name}}</strong> {{DeveloperProfiles.project3desc}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='cta-box centered'>
+  <div class='cta-box-card'>
+    <h2>Let’s talk about your&nbsp;idea!</h2>
+    <a class="btn-round btn-primary" href="{% url 'Contact' %}">Contact us</a>
+  </div>
+</section>
+{% endblock %}

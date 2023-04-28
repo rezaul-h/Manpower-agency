@@ -1,0 +1,56 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Contact Us | We Can Work 
+{% endblock %}
+
+{% block content %}
+
+  <section class='contact-page vertical-padding'>
+    <div class='contact-box'>
+      <h3 class='section-title contact-title'>If you have any questions, feedback or inquiries, please don't hesitate to
+        contact us.</h3>
+      <div class='js-contact-wrapper contact-form-column'>
+        <img alt="Agata" class="contact-photo"
+          src="{% static 'images/ceo.png' %}" />
+        <p>
+          Drop Agata a message at
+          <a href="mailto:agata.neale@lunarlogic.io?cc=contact@lunarlogic.io">jaehyeok.wcw@gmail.com</a>
+        </p>
+        <div class='success contact-success hide-success'>
+          <div class='success-image'></div>
+          <div class='success-message'>
+            <p>Thank you for contacting us.</p>
+            <p>We usually reply within 24 hours.</p>
+          </div>
+        </div>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+      {% endfor %}
+      {% endif %}
+        <form class="contact-form" id="new_contact_form" action="{% url 'Contact' %}" accept-charset="UTF-8"
+        data-remote="true" method="POST"><input name="utf8" type="hidden" value="&#x2713;" />
+        {% csrf_token %}
+        <div class='input-wrapper'>
+          <input class='flying-label-input' id='contact-name' name='contact_form_name' required='true' type='text'>
+          <label class='flying-label' for='contact-name'>Name</label>
+        </div>
+        <div class='input-wrapper'>
+          <input class='flying-label-input' id='contact-email' name='contact_form_email' required='true' type='email'>
+          <label class='flying-label' for='contact-email'>E-mail</label>
+        </div>
+        <div class='input-wrapper'>
+          <textarea class='flying-label-input' id='contact-message' name='contact_form_body' required='true'></textarea>
+          <label class='flying-label textarea-label' for='contact-message'>Message</label>
+        </div>
+        <div class='contact-form-action'>
+          <input class='btn-round btn-primary' data-disable-with='Send message' type='submit' value='Send message'>
+        </div>
+      </form>
+      </div>
+    </div>
+
+  </section>
+
+  {% endblock %}

@@ -1,0 +1,173 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Job Post | We Can Work 
+{% endblock %}
+
+{% block content %}
+
+  <div class='job-section vertical-padding'>
+    <article class='job-form-box' id='new_job_application'>
+      <div class='job-form-header'>
+        <h2>Job Postings!</h2>
+        <p>
+          Please fill the form in English.
+          Fields marked with * are required.
+        </p>
+      </div>
+      <form class="job-form" id="job_form" action="{% url 'Job Post' %}" accept-charset="UTF-8" method="POST" enctype="multipart/form-data">
+        <input
+          name="utf8" type="hidden" value="&#x2713;" />
+        {% csrf_token %}
+        <div class='input-wrapper'>
+          <input class="flying-label-input" type="text" name="job_title" id="job_title" />
+          <label class="flying-label required" for="job_title">Job title</label>
+        </div>
+        
+        <div class='input-wrapper'>
+          <label class="flying-label required" for="deadline">Application Deadline</label>
+          <input class="flying-label-input" type="date" name="deadline" id="deadline" />
+        </div>
+        <div class='input-wrapper'>
+          <input class="flying-label-input" type="text" name="company_name" id="company_name" />
+          <label class="flying-label required" for="company_name">Company name</label>
+        </div>
+        <div class='input-wrapper'>
+          <input class="flying-label-input" type="text" name="company_location" id="company_location" />
+          <label class="flying-label required" for="company_location">Company location</label>
+        </div>
+        <div class='input-wrapper'>
+          <input class="flying-label-input" type="text" name="job_type" id="job_type"/>
+          <label class="flying-label" for="job_type">Job type</label>
+        </div>
+        <div class='input-wrapper'>
+          <input class="flying-label-input" type="text" name="num_of_employees" id="num_of_employees" />
+          <label class="flying-label" for="num_of_employees">Number of employees</label>
+        </div>
+        <div class='input-wrapper input-wrapper-space-top'>
+          Description of the company
+          <span class='required'></span>
+          <textarea rows="10" placeholder="My name is..." class="textarea-expanded" name="company_description"
+            id="company_description">
+          </textarea>
+        </div>
+        <div class='input-description'>
+          Please, provide your contact information
+        </div>
+        <div class='input-wrapper input-wrapper-no-space-bottom'>
+          <input class="flying-label-input" type="text" name="company_email" id="company_email" />
+          <label class="flying-label" for="company_email">Email</label>
+        </div>
+        <div class='input-wrapper input-wrapper-no-space-bottom'>
+          <input class="flying-label-input" type="text" name="company_phone" id="company_phone" />
+          <label class="flying-label" for="company_phone">Phone</label>
+        </div>
+    </article>
+  </div>
+
+  <div class='job-section vertical-padding'>
+    <article class='job-form-box' id='new_job_application'>
+      <!-- Extracurricular  -->
+      <div class='job-form-header'>
+        <h3>
+          Requirements of the job position
+        </h3>
+      </div>
+      <div class='input-description'>
+        <h4> Objectives of this Role</h4>
+      </div>
+      <div class='input-wrapper'>
+        <input class="flying-label-input" type="text" name="role_obj1" id="role_obj1" />
+        <input class="flying-label-input" type="text" name="role_obj2" id="role_obj2" />
+        <input class="flying-label-input" type="text" name="role_obj3" id="role_obj3" />
+        <input class="flying-label-input" type="text" name="role_obj4" id="role_obj4" />
+        <input class="flying-label-input" type="text" name="role_obj5" id="role_obj5" />
+        <input class="flying-label-input" type="text" name="role_obj6" id="role_obj6" />
+        <input class="flying-label-input" type="text" name="role_obj7" id="role_obj7" />
+        <input class="flying-label-input" type="text" name="role_obj8" id="role_obj8" />
+        <input class="flying-label-input" type="text" name="role_obj9" id="role_obj9" />
+        <input class="flying-label-input" type="text" name="role_obj10" id="role_obj10" />
+      </div>
+      <div class='input-description'>
+        <h4> Knowledge, Skills & Abilities</h4>
+      </div>
+      <div class='input-wrapper'>
+        <input class="flying-label-input" type="text" name="job_skills1" id="job_skills1" />
+        <input class="flying-label-input" type="text" name="job_skills2" id="job_skills2" />
+        <input class="flying-label-input" type="text" name="job_skills3" id="job_skills3" />
+        <input class="flying-label-input" type="text" name="job_skills4" id="job_skills4" />
+        <input class="flying-label-input" type="text" name="job_skills5" id="job_skills5" />
+        <input class="flying-label-input" type="text" name="job_skills6" id="job_skills6" />
+        <input class="flying-label-input" type="text" name="job_skills7" id="job_skills7" />
+        <input class="flying-label-input" type="text" name="job_skills8" id="job_skills8" />
+        <input class="flying-label-input" type="text" name="job_skills9" id="job_skills9" />
+        <input class="flying-label-input" type="text" name="job_skills10" id="job_skills10" />
+      </div>
+    </article>
+  </div>
+
+  <div class='job-section vertical-padding'>
+    <article class='job-form-box' id='new_job_application'>
+
+      <div class='job-form-header'>
+        <h3>
+          Requirements of the qualifications
+        </h3>
+      </div>
+      <div class='input-wrapper input-wrapper-space-top'>
+        <h4> Minimum Qualifications</h4>
+        <textarea rows="5" placeholder="" class="textarea-expanded" name="min_qua"
+          id="min_qua">
+        </textarea>
+      </div>
+      <div class='input-wrapper input-wrapper-space-top'>
+        <h4> Preferred Qualifications</h4>
+        <textarea rows="5" placeholder="" class="textarea-expanded" name="pref_qua"
+          id="pref_qua">
+        </textarea>
+      </div>
+    </article>
+  </div>
+
+  <div class='job-section vertical-padding'>
+    <article class='job-form-box' id='new_job_application'>
+      <!-- Extracurricular  -->
+      <div class='job-form-header'>
+        <h3>
+          On Target Earnings
+        </h3>
+      </div>
+      <div class='input-wrapper input-wrapper-space-top'>
+        <h4> Salary Range</h4>
+        <textarea rows="5" placeholder="" class="textarea-expanded" name="salary_range"
+          id="salary_range">
+        </textarea>
+      </div>
+      <div class='input-wrapper input-wrapper-space-top'>
+        <h4>Featured benefits</h4>
+        <textarea rows="5" placeholder="" class="textarea-expanded" name="benefits"
+          id="benefits">
+        </textarea>
+      </div>
+
+      <div class='input-wrapper'>
+        <label class="label" for="circular">Job circular (PDF)</label>
+        <input type="file" name="circular" id="circular" />
+      </div>
+  
+      <input name="job_form[check_in_house]" type="hidden" value="0" /><input class="hidden" type="checkbox" value="1"
+        name="job_form[check_in_house]" id="job_form_check_in_house" />
+      <div class='input-wrapper input-wrapper-agreement'>
+        <input name="job_form[agreement]" type="hidden" value="0" /><input class="input-option visually-hidden"
+          type="checkbox" value="1" name="job_form[agreement]" id="job_form_agreement" />
+        <label class="required" for="job_form_agreement">As a recruiter, I confirm that the job post I am submitting is accurate and complete. Any false information or omissions may disqualify the job posting and may result in termination of my account if discovered later. The employer may verify the information provided and may contact me for further details. I release the employer from any liability arising from the job posting. The employment is at-will and either party may terminate it at any time with or without notice or cause.</label>
+      </div>
+  
+      <div class='input-wrapper-space-top'>
+        <input type="submit" name="commit" value="Continue" class="btn-round btn-primary x-submit"
+          data-disable-with="Submit Job Application" />
+      </div>
+      </form>
+    </article>
+  </div>  
+{% endblock %}

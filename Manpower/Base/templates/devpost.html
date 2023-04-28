@@ -1,0 +1,404 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Developer Post | We Can Work
+{% endblock %}
+
+{% block content %}
+<div class='job-section vertical-padding'>
+  <article class='job-form-box' id='new_job_application'>
+    <div class='job-form-header'>
+      <h2>Start your career with us</h2>
+      <p>
+        Please fill the form in English.
+        Fields marked with * are required.
+      </p>
+      <h3>
+        Personal Information
+      </h3>
+    </div>
+    <div class='success hide-success'>
+      <h2>High five, rocketeer!</h2>
+      <p>Our space employment squadron will take a look at your application shortly.</p>
+    </div>
+    <form class="job-form" id="job_form" action="{% url 'dev post' %}" accept-charset="UTF-8" method="POST" enctype="multipart/form-data">
+      <input
+        name="utf8" type="hidden" value="&#x2713;" />
+      {% csrf_token %}
+      
+      <div class='input-wrapper'>
+        <label class="label" for="image_file">Upload you image</label>
+        <input type="file" name="image_file" id="image_file" />
+      </div>
+
+      <div class='input-wrapper'>
+        <input class="flying-label-input" type="text" name="job_form_first_name" id="job_form_first_name" />
+        <label class="flying-label required" for="job_form_first_name">First name</label>
+      </div>
+      <div class='input-wrapper'>
+        <input class="flying-label-input" type="text" name="job_form_last_name" id="job_form_last_name" />
+        <label class="flying-label required" for="job_form_last_name">Last name</label>
+      </div>
+      <div class='input-wrapper'>
+        <input class="flying-label-input" type="text" name="job_form_email" id="job_form_email" />
+        <label class="flying-label required" for="job_form_email">E-mail</label>
+      </div>
+      <div class='input-wrapper'>
+        <input class="flying-label-input" type="text" name="job_form_phone" id="job_form_phone" />
+        <label class="flying-label" for="job_form_phone">Phone number</label>
+      </div>
+      <div class='input-wrapper'>
+        <input class="flying-label-input" type="text" name="job_form_location" id="job_form_location" />
+        <label class="flying-label" for="job_form_location">Location</label>
+      </div>
+      <div class='input-description'>
+        Please, either send us your link to your GitHub/LinkedIn profile.
+      </div>
+      <div class='input-wrapper input-wrapper-no-space-bottom'>
+        <input class="flying-label-input" type="text" name="job_form_linkedin_profile" id="job_form_linkedin_profile" />
+        <label class="flying-label" for="job_form_linkedin_profile">LinkedIn profile</label>
+      </div>
+      <div class='input-wrapper input-wrapper-no-space-bottom'>
+        <input class="flying-label-input" type="text" name="job_form_github_profile" id="job_form_github_profile" />
+        <label class="flying-label" for="job_form_github_profile">GitHub profile</label>
+      </div>
+
+      <div class='input-wrapper input-wrapper-space-top'>
+        Tell us something about yourself
+        <span class='required'></span>
+        <textarea rows="10" placeholder="My name is..." class="textarea-expanded" name="job_form_description"
+          id="job_form_description">
+</textarea>
+      </div>
+  </article>
+</div>
+
+
+<div class='job-section vertical-padding'>
+  <article class='job-form-box' id='new_job_application'>
+    <!-- Education -->
+    <div class='job-form-header'>
+      <h3>
+        Education
+      </h3>
+    </div>
+    <div class='input-description'>
+      <h4> Bechelors Information</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_institute1" id="job_form_institute1" />
+      <label class="flying-label required" for="job_form_institute1">Institute</label>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_degree1" id="job_form_degree1" />
+      <label class="flying-label required" for="job_form_degree1">Degree</label>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_duration1" id="job_form_duration1" />
+      <label class="flying-label required" for="job_form_duration1">Duration</label>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_result1" id="job_form_result1" />
+      <label class="flying-label required" for="job_form_result1">Result</label>
+    </div>
+    <div class='input-description'>
+      <h4> Master's Information</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_institute2" id="job_form_institute2" />
+      <label class="flying-label required" for="job_form_institute2">Institute</label>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_degree2" id="job_form_degree2" />
+      <label class="flying-label required" for="job_form_degree2">Degree</label>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_duration2" id="job_form_duration2" />
+      <label class="flying-label required" for="job_form_duration2">Duration</label>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_result2" id="job_form_result2" />
+      <label class="flying-label required" for="job_form_result2">Result</label>
+    </div>
+  </article>
+</div>
+
+
+<div class='job-section vertical-padding'>
+  <article class='job-form-box' id='new_job_application'>
+    <!-- Work Experience -->
+    <div class='job-form-header'>
+      <h3>
+        Work Experience
+      </h3>
+    </div>
+    <div class='input-description'>
+      <h4> 1st Job Experice</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_company1" id="job_form_company1" />
+      <label class="flying-label required" for="job_form_company1">Company Name</label>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_position1" id="job_form_position1" />
+      <label class="flying-label required" for="job_form_position1">Position</label>
+    </div>
+    <div class='input-wrapper'>
+      <label class="flying-label required" for="job_form_start1">Start Date</label>
+      <input class="flying-label-input" type="date" name="job_form_start1" id="" />
+    </div>
+    <div class='input-wrapper'>
+      <label class="flying-label required" for="job_form_end1">End Date</label>
+      <input class="flying-label-input" type="date" name="job_form_end1" id="" />
+    </div>
+    <div class='input-description'>
+      <h4> 2nd Job Experience </h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_company2" id="job_form_company2" />
+      <label class="flying-label required" for="job_form_company2">Company Name</label>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="job_form_position2" id="job_form_position2" />
+      <label class="flying-label required" for="job_form_position2">Position</label>
+    </div>
+    <div class='input-wrapper'>
+      <label class="flying-label required" for="job_form_start2">Start Date</label>
+      <input class="flying-label-input" type="date" name="job_form_start2" id="" />
+    </div>
+    <div class='input-wrapper'>
+      <label class="flying-label required" for="job_form_end2">End Date</label>
+      <input class="flying-label-input" type="date" name="job_form_end2" id="" />
+    </div>
+  </article>
+</div>
+
+
+<div class='job-section vertical-padding'>
+  <article class='job-form-box' id='new_job_application'>
+    <!-- Skills -->
+    <div class='job-form-header'>
+      <h3>
+        Skills
+      </h3>
+    </div>
+    <!-- Speciality -->
+    <div class='input-description'>
+      <h4> Speciality</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="Speciality1" id="Speciality1"
+        style="width: 160px; display: inline-block;" placeholder="1st"/>
+      <input class="flying-label-input" type="text" name="Speciality2" id="Speciality2"
+        style="width: 160px; display: inline-block;" placeholder="2nd"/>
+      <input class="flying-label-input" type="text" name="Speciality3" id="Speciality3"
+        style="width: 160px; display: inline-block;" placeholder="3rd"/>
+      <input class="flying-label-input" type="text" name="Speciality4" id="Speciality4"
+        style="width: 160px; display: inline-block;" placeholder="4th"/>
+    </div>
+    <!-- Languages -->
+    <div class='input-description'>
+      <h4> Languages</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="Languages1" id="Languages1"
+        style="width: 160px; display: inline-block;" placeholder="1st"/>
+      <input class="flying-label-input" type="text" name="Languages2" id="Languages2"
+        style="width: 160px; display: inline-block;" placeholder="2nd"/>
+      <input class="flying-label-input" type="text" name="Languages3" id="Languages3"
+        style="width: 160px; display: inline-block;" placeholder="3rd"/>
+      <input class="flying-label-input" type="text" name="Languages4" id="Languages4"
+        style="width: 160px; display: inline-block;" placeholder="4th"/>
+    </div>
+    <!-- Tools -->
+    <div class='input-description'>
+      <h4> Tools</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="Tools1" id="Tools1"
+        style="width: 160px; display: inline-block;" placeholder="1st"/>
+      <input class="flying-label-input" type="text" name="Tools2" id="Tools2"
+        style="width: 160px; display: inline-block;" placeholder="2nd"/>
+      <input class="flying-label-input" type="text" name="Tools3" id="Tools3"
+        style="width: 160px; display: inline-block;" placeholder="3rd"/>
+      <input class="flying-label-input" type="text" name="Tools4" id="Tools4"
+        style="width: 160px; display: inline-block;" placeholder="4th"/>
+    </div>
+    <!-- Interpersonal -->
+    <div class='input-description'>
+      <h4> Interpersonal</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="Interpersonal1" id="Interpersonal1"
+        style="width: 160px; display: inline-block;" placeholder="1st"/>
+      <input class="flying-label-input" type="text" name="Interpersonal2" id="Interpersonal2"
+        style="width: 160px; display: inline-block;" placeholder="2nd"/>
+      <input class="flying-label-input" type="text" name="Interpersonal3" id="Interpersonal3"
+        style="width: 160px; display: inline-block;" placeholder="3rd"/>
+      <input class="flying-label-input" type="text" name="Interpersonal4" id="Interpersonal4"
+        style="width: 160px; display: inline-block;" placeholder="4th"/>
+    </div>
+  </article>
+</div>
+
+<div class='job-section vertical-padding'>
+  <article class='job-form-box' id='new_job_application'>
+    <!-- Projects -->
+    <div class='job-form-header'>
+      <h3>
+        Projects
+      </h3>
+    </div>
+    <!-- Project 1 -->
+    <div class='input-description'>
+      <h4> Project 1</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="project1name" id="project1name" placeholder="1st project name"/>
+      <input class="flying-label-input" type="text" name="project1desc" id="project1desc" placeholder="1st project description"/>
+    </div>
+    <!-- project 2 -->
+    <div class='input-description'>
+      <h4> Project 2</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="project2name" id="project2name" placeholder="2nd project name"/>
+      <input class="flying-label-input" type="text" name="project2desc" id="project2desc" placeholder="2nd project description"/>
+    </div>
+    <!-- project 3 -->
+    <div class='input-description'>
+      <h4> Project 3</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="project3name" id="project3name" placeholder="3rd project name"/>
+      <input class="flying-label-input" type="text" name="project3desc" id="project3desc" placeholder="3rd project description"/>
+    </div>
+  </article>
+</div>
+
+<div class='job-section vertical-padding'>
+  <article class='job-form-box' id='new_job_application'>
+    <!-- Research works -->
+    <div class='job-form-header'>
+      <h3>
+        Research Works
+      </h3>
+    </div>
+    <!-- paper 1 -->
+    <div class='input-description'>
+      <h4> 1st Paper</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="paper1name" id="paper1name" placeholder="1st paper name" />
+      <input class="flying-label-input" type="text" name="paper1doi" id="paper1doi" placeholder="1st paper DOI"/>
+    </div>
+    <!-- paper 2 -->
+    <div class='input-description'>
+      <h4> 2nd Paper</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="paper2name" id="paper2name" placeholder="2nd paper name"/>
+      <input class="flying-label-input" type="text" name="paper2doi" id="paper2doi" placeholder="2nd paper DOi"/>
+    </div>
+    <!-- paper 3 -->
+    <div class='input-description'>
+      <h4> 3rd Paper</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="paper3name" id="paper3name" placeholder="3rd paper name"/>
+      <input class="flying-label-input" type="text" name="paper3doi" id="paper3doi" placeholder="3rd paper DOI"/>
+    </div>
+  </article>
+</div>
+
+<div class='job-section vertical-padding'>
+  <article class='job-form-box' id='new_job_application'>
+    <!-- Certifications -->
+    <div class='job-form-header'>
+      <h3>
+        Certifications
+      </h3>
+    </div>
+    <!-- Certifications 1 -->
+    <div class='input-description'>
+      <h4> 1st Certifications</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="Certifications1name" id="Certifications1name" placeholder="1st Certification name"/>
+      <input class="flying-label-input" type="text" name="Certifications1link" id="Certifications1link" placeholder="1st Certification link"/>
+    </div>
+    <!-- Certifications 2 -->
+    <div class='input-description'>
+      <h4> 2nd Certifications</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="Certifications2name" id="Certifications2name" placeholder="2nd Certification name"/>
+      <input class="flying-label-input" type="text" name="Certifications2link" id="Certifications2link" placeholder="2nd Certification link"/>
+    </div>
+    <!-- Certifications 3 -->
+    <div class='input-description'>
+      <h4> 3rd Certifications</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="Certifications3name" id="Certifications3name" placeholder="3rd Certification name"/>
+      <input class="flying-label-input" type="text" name="Certifications3link" id="Certifications3link" placeholder="3rd Certification link"/>
+    </div>
+  </article>
+</div>
+
+<div class='job-section vertical-padding'>
+  <article class='job-form-box' id='new_job_application'>
+    <!-- Extracurricular  -->
+    <div class='job-form-header'>
+      <h3>
+        Extracurricular
+      </h3>
+    </div>
+    <div class='input-description'>
+      <h4> Activities</h4>
+    </div>
+    <div class='input-wrapper'>
+      <input class="flying-label-input" type="text" name="Activities1" id="Activities1" placeholder="1st"/>
+      <input class="flying-label-input" type="text" name="Activities2" id="Activities2" placeholder="2nd"/>
+      <input class="flying-label-input" type="text" name="Activities3" id="Activities3" placeholder="3rd"/>
+      <input class="flying-label-input" type="text" name="Activities4" id="Activities4" placeholder="4th"/>
+    </div>
+  </article>
+</div>
+
+<div class='job-section vertical-padding'>
+  <article class='job-form-box' id='new_job_application'>
+
+    <!-- CV -->
+    <div class='input-wrapper'>
+      <label class="label" for="job_form_cv">CV (PDF)</label>
+      <input type="file" name="job_form_cv" id="job_form_cv" />
+    </div>
+
+
+    <!-- confirmation of data -->
+    <input name="job_form[check_in_house]" type="hidden" value="0" /><input class="hidden" type="checkbox" value="1"
+      name="job_form[check_in_house]" id="job_form_check_in_house" />
+    <div class='input-wrapper input-wrapper-agreement'>
+      <input name="job_form[agreement]" type="hidden" value="0" /><input class="input-option visually-hidden"
+        type="checkbox" value="1" name="job_form[agreement]" id="job_form_agreement" required/>
+      <label class="required" for="job_form_agreement">I confirm that my job application is accurate and complete.
+        False statements or omissions may disqualify me from consideration and result in dismissal if discovered
+        later. The employer can investigate my background and contact my references. I release them from any
+        liability. Employment is at-will and can be terminated by either party at any time, with or without cause or
+        notice.</label>
+    </div>
+
+    <div class='input-wrapper-space-top'>
+      <!-- <input type="hidden" name="job_form[referer]" id="job_form_referer" /> -->
+      <input type="submit" name="commit" value="Continue" class="btn-round btn-primary x-submit"
+        data-disable-with="Submit Job Application" />
+    </div>
+
+
+    </form>
+  </article>
+
+</div>
+
+
+{% endblock %}
