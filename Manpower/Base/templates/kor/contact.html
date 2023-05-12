@@ -1,0 +1,55 @@
+
+{% extends "kor/base.html" %}
+{% load static %}
+{% block title %} Contact Us | We Can Work 
+{% endblock %}
+
+{% block content %}
+
+  <section class='contact-page vertical-padding'>
+    <div class='contact-box'>
+      <h3 class='section-title contact-title'>궁금한 점이나 피드백, 문의 사항이 있으시면 언제든지 문의해 주세요.</h3>
+      <div class='js-contact-wrapper contact-form-column'>
+        <img alt="Agata" class="contact-photo"
+          src="{% static 'images/ceo.png' %}" />
+        <p>
+          재혁에게 메시지를 남겨주세요 
+          <a href="mailto:agata.neale@lunarlogic.io?cc=contact@lunarlogic.io">jaehyeok.wcw@gmail.com</a>
+        </p>
+        <div class='success contact-success hide-success'>
+          <div class='success-image'></div>
+          <div class='success-message'>
+            <p>문의해 주셔서 감사합니다.</p>
+            <p>보통 24시간 이내에 답변해 드립니다.</p>
+          </div>
+        </div>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+      {% endfor %}
+      {% endif %}
+        <form class="contact-form" id="new_contact_form" action="{% url 'korContact' %}" accept-charset="UTF-8"
+        data-remote="true" method="POST"><input name="utf8" type="hidden" value="&#x2713;" />
+        {% csrf_token %}
+        <div class='input-wrapper'>
+          <input class='flying-label-input' id='contact-name' name='contact_form_name' required='true' type='text'>
+          <label class='flying-label' for='contact-name'>이름</label>
+        </div>
+        <div class='input-wrapper'>
+          <input class='flying-label-input' id='contact-email' name='contact_form_email' required='true' type='email'>
+          <label class='flying-label' for='contact-email'>이메일</label>
+        </div>
+        <div class='input-wrapper'>
+          <textarea class='flying-label-input' id='contact-message' name='contact_form_body' required='true'></textarea>
+          <label class='flying-label textarea-label' for='contact-message'>메시지</label>
+        </div>
+        <div class='contact-form-action'>
+          <input class='btn-round btn-primary' data-disable-with='Send message' type='submit' value='메시지 보내기'>
+        </div>
+      </form>
+      </div>
+    </div>
+
+  </section>
+
+  {% endblock %}

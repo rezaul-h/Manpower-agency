@@ -1,5 +1,5 @@
 
-{% extends "base.html" %}
+{% extends "kor/base.html" %}
 {% load static %}
 {% block title %} Recruiter Profile | We Can Work 
 {% endblock %}
@@ -10,19 +10,18 @@
     <div class='project-hero wrapper columns'>
       <div class='project-hero__info'>
         ←&nbsp;&nbsp;
-        <a class='project-hero__portfolio-link u-underlined-hover-link' href="{% url 'jobshow' %}">Go back to all
-          job opennings</a>
+        <a class='project-hero__portfolio-link u-underlined-hover-link' href="{% url 'korjobshow' %}">모두로 돌아가기 채용 정보</a>
         <h1>{{recruiterProfiles.job_title}}</h1>
         <div class='project-domains'>
-          <h2 class='project-domains__heading'>On Target Earnings</h2>
+          <h2 class='project-domains__heading'>목표 수익 달성</h2>
           <div class='project-domains__item'>
             <p>${{recruiterProfiles.salary_range}}</p>
           </div>
         </div>
         <div class='project-domains'>
-          <h2 class='project-domains__heading'>Download the Job circular</h2>
+          <h2 class='project-domains__heading'>채용 안내문 다운로드</h2>
           <div class='project-domains__item'>
-            <a href="{% url 'downloadcopy' pk=recruiterProfiles.pk %}">{{recruiterProfiles.job_title}} for {{recruiterProfiles.company_name}} (Download PDF)</a>
+            <a href="{% url 'kordownloadcopy' pk=recruiterProfiles.pk %}">{{recruiterProfiles.job_title}} for {{recruiterProfiles.company_name}} (Download PDF)</a>
           </div>
         </div>
 
@@ -31,7 +30,7 @@
 
         
         <div class='project-domains'>
-          <h2 class='project-domains__heading'>About {{recruiterProfiles.company_name}}</h2>
+          <h2 class='project-domains__heading'>정보 {{recruiterProfiles.company_name}}</h2>
           <div class='project-domains__item'>
             <p>{{recruiterProfiles.company_location}}</p>
           </div>
@@ -69,7 +68,7 @@
   <section class='project-quote'>
     <div class='testimonial-box project-quote__box'>
       <p class='project-quote__author'>
-        <strong>About {{recruiterProfiles.company_name}} </strong>
+        <strong>정보 {{recruiterProfiles.company_name}} </strong>
         <br>
         <span>{{recruiterProfiles.company_description}}</span>
       </p>
@@ -80,7 +79,7 @@
   <section class='project-goals wrapper vertical-padding'> 
     <div class='columns'>
       <div class='column'>
-        <h2 class='project-goals__heading'>Objectives of this Role</h2>
+        <h2 class='project-goals__heading'>이 역할의 목표</h2>
         <ul class='project-goals-list'>
           {% if recruiterProfiles.role_obj1 %}
           <li class='project-goals-list__item'>{{recruiterProfiles.role_obj1}}</li>
@@ -115,7 +114,7 @@
         </ul>
       </div>
       <div class='column'>
-        <h2 class='project-goals__heading'>Knowledge, Skills & Abilities</h2>
+        <h2 class='project-goals__heading'>지식, 기술 및 능력</h2>
         <ul class='project-goals-list'>
           {% if recruiterProfiles.job_skills1 %}
           <li class='project-goals-list__item'>{{recruiterProfiles.job_skills1}}</li>
@@ -155,13 +154,13 @@
   <section class='company-our-stats'>
     <div class='wrapper'>
       <h2 class='section-title'>
-        Qualifications
+        자격
       </h2>
       <div class='columns'>
         {% if recruiterProfiles.min_qua %}
         <div class='column'>
           <span class='stats-number' style="font-size: 40px;">
-            Minimum Qualifications
+            최소 자격 요건
           </span>
           <span class='break-word stats-title'style="font-size: 18px;">
             {{recruiterProfiles.min_qua}}
@@ -171,7 +170,7 @@
         {% if recruiterProfiles.pref_qua %}
         <div class='column'>
           <span class='stats-number' style="font-size: 40px;">
-            Preffered Qualifications
+            선호 자격
           </span>
           <span class='break-word stats-title'style="font-size: 18px;">
             {{recruiterProfiles.pref_qua}}
@@ -214,8 +213,8 @@
   </section> -->
   <section class='cta-box centered'>
     <div class='cta-box-card'>
-      <h2>Let’s talk about your&nbsp;idea!</h2>
-      <a class="btn-round btn-primary" href="../contact.html">Contact us</a>
+      <h2>여러분의 아이디어에 대해 이야기해 보세요!</h2>
+      <a class="btn-round btn-primary" href="{% url 'korContact' %}">문의하기</a>
     </div>
   </section>
 {% endblock %}

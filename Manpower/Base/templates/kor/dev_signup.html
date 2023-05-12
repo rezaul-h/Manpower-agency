@@ -1,0 +1,58 @@
+{% extends "kor/base.html" %}
+{% load static %}
+{% block title %} Developer Sign Up | We Can Work 
+{% endblock %}
+
+{% block content %}
+
+  <section class='contact-page vertical-padding'>
+    <div class='contact-box'>
+      <h3 class='section-title contact-title'>개발자 네트워크 회원이 되세요: 지금 가입하기</h3>
+      <div class='js-contact-wrapper contact-form-column'>
+        <img alt="Agata" class="contact-photo"
+          src="{% static 'images/We Can Work_Logo.png' %}" />
+        <div class='success contact-success hide-success'>
+          <div class='success-image'></div>
+          <div class='success-message'>
+            <p>개발자로 등록해 주셔서 감사합니다.</p>
+            <p>사용자 이름과 비밀번호로 로그인하여 개발자 프로필에 로그인하세요.</p>
+            <a class='btn-round btn-primary hero-contact' href="{% url 'korDevSignin'%}">로그인</a>
+          </div>
+        </div>
+        <form class="contact-form" id="new_contact_form" accept-charset="UTF-8"
+          data-remote="true" method="POST"><input name="utf8" type="hidden" value="&#x2713;" />
+          {% csrf_token %}
+          <div class='input-wrapper'>
+            <input class='flying-label-input' id='contact-name' name='developer_name' required='true' type='text'>
+            <label class='flying-label' for='contact-name'>Full Name</label>
+          </div>
+          <div class='input-wrapper'>
+            <input class='flying-label-input' id='contact-name' name='developer_username' required='true' type='text'>
+            <label class='flying-label' for='contact-name'>Username</label>
+          </div>
+          <div class='input-wrapper'>
+            <input class='flying-label-input' id='contact-email' name='developer_email' required='true'
+              type='email'>
+            <label class='flying-label' for='contact-email'>E-mail</label>
+          </div>
+          <div class='input-wrapper'>
+            <input class='flying-label-input' id='contact-email' name='developer_password' required='true'
+              type='text'>
+            <label class='flying-label' for='contact-email'>Password</label>
+          </div>
+
+          <div class='contact-form-action'>
+            <input class='btn-round btn-primary' data-disable-with='Send message' type='submit' value='Sign Up'>
+          </div>
+        </form>
+        <div style="display: flex;align-items: center;padding-top: 50px;width: 60%; margin: 0 auto;">
+          <p style="margin-right: 10px;">이미 개발자 계정이 있으신가요? </p>
+          <a href="{% url 'korDevSignin' %}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 10px; width: 100px;" onmouseover="this.style.backgroundColor='#0062cc';"
+          onmouseout="this.style.backgroundColor='#007bff';">로그인!</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  {% endblock %}

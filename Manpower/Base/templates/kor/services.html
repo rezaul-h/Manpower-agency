@@ -1,0 +1,97 @@
+{% extends "kor/base.html" %}
+{% load static %}
+{% block title %} Services | We Can Work
+{% endblock %}
+
+{% block content %}
+
+<section class='service-header centered'>
+  <div class='service-intro-wrapper wrapper'>
+    <h1 class='service-category-title'>일하는 방식</h1>
+    <h2 class='section-title'>효과적인 솔루션을 만들기 위한 협업 <br /> 채용 요구 사항</h2>
+  </div>
+  <div class='service-index-image'></div>
+</section>
+<div class='service-teasers-container'>
+  <div class='wrapper columns'>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'kordev post' %}">
+        <div class='work-area-icon strategy'></div>
+        <p>
+          자세히 알아보기
+          <br>
+          <span class='service-teaser-title'>개발자 프로필 만들기</span>
+        </p>
+      </a>
+    </div>
+
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'korjobshow' %}">
+        <div class='work-area-icon design'></div>
+        <p>
+          자세히 알아보기
+          <br>
+          <span class='service-teaser-title'>채용 공고 보기</span>
+        </p>
+      </a>
+    </div>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'kordevshow' %}">
+        <div class='work-area-icon development'></div>
+        <p>
+          자세히 알아보기
+          <br>
+          <span class='service-teaser-title'>개발자 프로필 보기</span>
+        </p>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<section class='wrapper vertical-padding horizontal-padding'>
+  <div class='how-we-work-desc'>
+    <p class='p-paragraph'>WE CAN WORK는 사용자 중심의 서비스 접근 방식을 통해 사용자 경험을 우선시하고 직관적이고 사용자 친화적이며 탐색하기 쉬운 플랫폼을 제공합니다. 채용 담당자와 개발자 모두가 직면한 고유한 과제를 이해하고 전문성을 바탕으로 각자의 니즈를 충족하는 솔루션을 개발합니다.
+    </p>
+  </div>
+  <blockquote class='quote-interruption'>
+    <p class='quote-interruption-content'>"우리는 의미 있는 일이 삶의 만족도를 높이는 핵심 요소라고 믿으며, 재능 있는 인재들이 올바른 기회와 연결될 수 있는 플랫폼을 제공하게 된 것을 자랑스럽게 생각합니다. 우리의 궁극적인 목표는 인재가 번창할 수 있는 커뮤니티를 만들고 채용 담당자가 채용 요구사항에 완벽하게 부합하는 인재를 찾을 수 있는 환경을 조성하는 것입니다."</p>
+    <p class='quote-author'> <strong>이재혁 대표, We Can Work</strong></p>
+  </blockquote>
+  <div class='how-we-work-desc'>
+    <p class='p-paragraph'>채용 프로세스를 간소화하려는 채용 담당자이든 다음 기회를 찾고 있는 개발자이든, WE CAN WORK는 성공에 필요한 도구와 리소스를 갖추고 있습니다. 지금 바로 커뮤니티에 가입하여 완벽한 인재를 찾아보세요!
+    </p>
+  </div>
+</section>
+<div class='service-teasers-container'>
+  <div class='wrapper columns'>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'kordev post' %}">
+        <p>
+          자세히 알아보기
+          <span class='service-teaser-title break-word'>개발자 프로필 만들기</span>
+        </p>
+      </a></div>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'korjobshow' %}">
+        <p>
+          자세히 알아보기
+          <span class='service-teaser-title break-word'>채용 공고 보기</span>
+        </p>
+      </a></div>
+    <div class='service-teaser column'>
+      <a class="service-teaser-link" href="{% url 'kordevshow' %}">
+        <p>
+          자세히 알아보기
+          <span class='service-teaser-title break-word'>개발자 프로필 보기</span>
+        </p>
+      </a></div>
+  </div>
+</div>
+<section class='cta-box service-action centered'>
+  <div class='cta-box-card'>
+    <h2>Let’s talk about your&nbsp;idea!</h2>
+    <a class="btn-round btn-primary" href="{% url 'korContact' %}">문의하기</a>
+  </div>
+</section>
+{% endblock %}

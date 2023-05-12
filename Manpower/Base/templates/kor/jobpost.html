@@ -1,0 +1,172 @@
+
+{% extends "kor/base.html" %}
+{% load static %}
+{% block title %} Job Post | We Can Work 
+{% endblock %}
+
+{% block content %}
+
+  <div class='job-section vertical-padding'>
+    <article class='job-form-box' id='new_job_application'>
+      <div class='job-form-header'>
+        <h2>채용 공고!</h2>
+        <p>
+          한국어/영어로 양식을 작성해 주세요. 표시된 항목은 필수 입력 항목입니다.
+        </p>
+      </div>
+      <form class="job-form" id="job_form" action="{% url 'korJob Post' %}" accept-charset="UTF-8" method="POST" enctype="multipart/form-data">
+        <input
+          name="utf8" type="hidden" value="&#x2713;" />
+        {% csrf_token %}
+        <div class='input-wrapper'>
+          <input class="flying-label-input" type="text" name="job_title" id="job_title" />
+          <label class="flying-label required" for="job_title">직책</label>
+        </div>
+        
+        <div class='input-wrapper'>
+          <label class="flying-label required" for="deadline">신청 마감일</label>
+          <input class="flying-label-input" type="date" name="deadline" id="deadline" />
+        </div>
+        <div class='input-wrapper'>
+          <input class="flying-label-input" type="text" name="company_name" id="company_name" />
+          <label class="flying-label required" for="company_name">회사 이름</label>
+        </div>
+        <div class='input-wrapper'>
+          <input class="flying-label-input" type="text" name="company_location" id="company_location" />
+          <label class="flying-label required" for="company_location">회사 위치</label>
+        </div>
+        <div class='input-wrapper'>
+          <input class="flying-label-input" type="text" name="job_type" id="job_type"/>
+          <label class="flying-label" for="job_type">근무 유형(파트타임/풀타임/원격)</label>
+        </div>
+        <div class='input-wrapper'>
+          <input class="flying-label-input" type="text" name="num_of_employees" id="num_of_employees" />
+          <label class="flying-label" for="num_of_employees">직원 수</label>
+        </div>
+        <div class='input-wrapper input-wrapper-space-top'>
+          회사 설명
+          <span class='required'></span>
+          <textarea rows="10" placeholder="우리 회사는 ..." class="textarea-expanded" name="company_description"
+            id="company_description">
+          </textarea>
+        </div>
+        <div class='input-description'>
+          연락처 정보를 입력해 주세요.
+        </div>
+        <div class='input-wrapper input-wrapper-no-space-bottom'>
+          <input class="flying-label-input" type="text" name="company_email" id="company_email" />
+          <label class="flying-label" for="company_email">이메일</label>
+        </div>
+        <div class='input-wrapper input-wrapper-no-space-bottom'>
+          <input class="flying-label-input" type="text" name="company_phone" id="company_phone" />
+          <label class="flying-label" for="company_phone">전화</label>
+        </div>
+    </article>
+  </div>
+
+  <div class='job-section vertical-padding'>
+    <article class='job-form-box' id='new_job_application'>
+      <!-- Extracurricular  -->
+      <div class='job-form-header'>
+        <h3>
+          직책의 요구 사항
+        </h3>
+      </div>
+      <div class='input-description'>
+        <h4> 이 역할의 목표</h4>
+      </div>
+      <div class='input-wrapper'>
+        <input class="flying-label-input" type="text" name="role_obj1" id="role_obj1" />
+        <input class="flying-label-input" type="text" name="role_obj2" id="role_obj2" />
+        <input class="flying-label-input" type="text" name="role_obj3" id="role_obj3" />
+        <input class="flying-label-input" type="text" name="role_obj4" id="role_obj4" />
+        <input class="flying-label-input" type="text" name="role_obj5" id="role_obj5" />
+        <input class="flying-label-input" type="text" name="role_obj6" id="role_obj6" />
+        <input class="flying-label-input" type="text" name="role_obj7" id="role_obj7" />
+        <input class="flying-label-input" type="text" name="role_obj8" id="role_obj8" />
+        <input class="flying-label-input" type="text" name="role_obj9" id="role_obj9" />
+        <input class="flying-label-input" type="text" name="role_obj10" id="role_obj10" />
+      </div>
+      <div class='input-description'>
+        <h4> 지식, 기술 및 능력</h4>
+      </div>
+      <div class='input-wrapper'>
+        <input class="flying-label-input" type="text" name="job_skills1" id="job_skills1" />
+        <input class="flying-label-input" type="text" name="job_skills2" id="job_skills2" />
+        <input class="flying-label-input" type="text" name="job_skills3" id="job_skills3" />
+        <input class="flying-label-input" type="text" name="job_skills4" id="job_skills4" />
+        <input class="flying-label-input" type="text" name="job_skills5" id="job_skills5" />
+        <input class="flying-label-input" type="text" name="job_skills6" id="job_skills6" />
+        <input class="flying-label-input" type="text" name="job_skills7" id="job_skills7" />
+        <input class="flying-label-input" type="text" name="job_skills8" id="job_skills8" />
+        <input class="flying-label-input" type="text" name="job_skills9" id="job_skills9" />
+        <input class="flying-label-input" type="text" name="job_skills10" id="job_skills10" />
+      </div>
+    </article>
+  </div>
+
+  <div class='job-section vertical-padding'>
+    <article class='job-form-box' id='new_job_application'>
+
+      <div class='job-form-header'>
+        <h3>
+          자격 요건
+        </h3>
+      </div>
+      <div class='input-wrapper input-wrapper-space-top'>
+        <h4> 최소 자격 요건</h4>
+        <textarea rows="5" placeholder="" class="textarea-expanded" name="min_qua"
+          id="min_qua">
+        </textarea>
+      </div>
+      <div class='input-wrapper input-wrapper-space-top'>
+        <h4> 선호 자격</h4>
+        <textarea rows="5" placeholder="" class="textarea-expanded" name="pref_qua"
+          id="pref_qua">
+        </textarea>
+      </div>
+    </article>
+  </div>
+
+  <div class='job-section vertical-padding'>
+    <article class='job-form-box' id='new_job_application'>
+      <!-- Extracurricular  -->
+      <div class='job-form-header'>
+        <h3>
+          목표 수익 달성
+        </h3>
+      </div>
+      <div class='input-wrapper input-wrapper-space-top'>
+        <h4> 급여 범위</h4>
+        <textarea rows="5" placeholder="" class="textarea-expanded" name="salary_range"
+          id="salary_range">
+        </textarea>
+      </div>
+      <div class='input-wrapper input-wrapper-space-top'>
+        <h4>주요 혜택</h4>
+        <textarea rows="5" placeholder="" class="textarea-expanded" name="benefits"
+          id="benefits">
+        </textarea>
+      </div>
+
+      <div class='input-wrapper'>
+        <label class="label" for="circular">채용 안내문(PDF)</label>
+        <input type="file" name="circular" id="circular" />
+      </div>
+  
+      <input name="job_form[check_in_house]" type="hidden" value="0" /><input class="hidden" type="checkbox" value="1"
+        name="job_form[check_in_house]" id="job_form_check_in_house" />
+      <div class='input-wrapper input-wrapper-agreement'>
+        <input name="job_form[agreement]" type="hidden" value="0" /><input class="input-option visually-hidden"
+          type="checkbox" value="1" name="job_form[agreement]" id="job_form_agreement" />
+        <label class="required" for="job_form_agreement">채용 담당자로서 본인은 제출하는 채용 공고가 정확하고 완전함을 확인합니다. 허위 정보나 누락이 있는 경우 채용 공고의 자격이 박탈될 수 있으며, 나중에 발견될 경우 내 계정이 해지될 수 있습니다. 고용주는 제공된 정보를 확인할 수 있으며 자세한 내용을 위해 저에게 연락할 수 있습니다. 본인은 채용 공고로 인해 발생하는 모든 책임으로부터 고용주를 면제합니다. 고용은 자유의사에 따라 이루어지며 양 당사자는 통지나 사유 없이 언제든지 고용을 해지할 수 있습니다.</label>
+      </div>
+  
+      <div class='input-wrapper-space-top'>
+        <input type="submit" name="commit" value="계속" class="btn-round btn-primary x-submit"
+          data-disable-with="Submit Job Application" />
+      </div>
+      </form>
+    </article>
+  </div>  
+{% endblock %}

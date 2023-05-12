@@ -1,0 +1,84 @@
+{% extends "kor/base.html" %}
+{% load static %}
+{% block title %} News | We Can Work
+{% endblock %}
+
+{% block content %}
+
+<div class='project-hero-container philips'>
+  <div class='project-hero wrapper columns'>
+    <div class='project-hero__info'>
+      ←&nbsp;&nbsp;
+      <a class='project-hero__portfolio-link u-underlined-hover-link' href="{% url 'korshownews' %}">모든 공지사항 게시판으로 돌아가기</a>
+      <h1> {{Newslists.headline}}</h1>
+      <!-- Contact -->
+      <div class='project-domains'>
+        <h2 class='project-domains__heading'>게시자</h2>
+        <div class='project-domains__item'>
+          <p>{{Newslists.author}}</p>
+        </div>
+      </div>
+      <!-- Tags -->
+      <div class='project-domains'>
+        <h2 class='project-domains__heading'>카테고리</h2>
+        <div class='project-domains__item'>
+          <p>{{Newslists.tags}}</p>
+        </div>
+      </div>
+    </div>
+    <div class='project-hero__image'>
+
+
+      <span data-alt="ActiveLink - a wearable device for monitoring sleep and activity." data-picture=""><span
+          data-src="{{Newslists.newsimage.url}}"></span><span
+          data-src="{{Newslists.newsimage.url}}"></span><span data-src="{{Newslists.newsimage.url}}"
+          data-media="(min-width: 768px)"></span><noscript><img
+            alt="ActiveLink - a wearable device for monitoring sleep and activity."
+            src="{{Newslists.newsimage.url}}" /></noscript></span>
+    </div>
+  </div>
+</div>
+
+<section class='project-quote'>
+  <div class='testimonial-box project-quote__box'>
+    <p class='project-quote__author'>
+      <strong>요약</strong>
+      <br>
+      <span>{{Newslists.summary}}</span>
+    </p>
+    <br>
+  </div>
+</section>
+
+<section class='wrapper'>
+    <div class='columns company-topic'>
+        <div class='column company-text-half-column'>
+          <h2>
+             
+            <span class='accent'>
+                {{Newslists.headline}}
+            </span>
+          </h2>
+          <p class='p-paragraph'>
+            {{Newslists.body}}
+        </div>
+        <div class='column photo-column transparency-image'>
+            <span data-alt="ActiveLink - a wearable device for monitoring sleep and activity." data-picture=""><span
+                data-src="{{Newslists.newsimage.url}}"></span><span
+                data-src="{{Newslists.newsimage.url}}"></span><span data-src="{{Newslists.newsimage.url}}"
+                data-media="(min-width: 768px)"></span><noscript><img
+                  alt="ActiveLink - a wearable device for monitoring sleep and activity."
+                  src="{{Newslists.newsimage.url}}" /></noscript></span>
+        </div>
+      </div>
+
+</section>
+
+
+<section class='cta-box centered'>
+  <div class='cta-box-card'>
+    <h2>여러분의 아이디어에 대해 이야기해 보세요!</h2>
+    <a class="btn-round btn-primary" href="{% url 'korContact' %}">문의하기</a>
+  </div>
+</section>
+{% endblock %}

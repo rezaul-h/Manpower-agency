@@ -1,0 +1,65 @@
+
+{% extends "kor/base.html" %}
+{% load static %}
+{% block title %} Job Post Show | We Can Work 
+{% endblock %}
+
+{% block content %}
+
+  <div class='portfolio-wrapper wrapper'>
+    <div class='portfolio-intro centered'>
+      <h1 class='section-title'>
+        <span class='break-word'>공지사항 게시판</span>
+      </h1>
+      <div class='portfolio-legend'>
+        <div class='icons'>
+          <div class='icon-box web'>web</div>
+          <div class='icon-box mobile'>mobile</div>
+          <div class='icon-box design'>design</div>
+          <div class='icon-box tests'>testing</div>
+        </div>
+      </div>
+    </div>
+    <div class='portfolio-grid'>
+      {% for newslist in newslists %}
+      <div class='project-teaser-wrapper featured'>
+        <a class="project-teaser-link" href="{% url 'korsinglenews' pk=newslist.pk %}">
+          <div class='project-teaser'>
+            <div class='project-image-container aircasting-mobile'>
+              <img alt="AirCasting - an iOS and Android app for collaborative air pollution mapping"
+                src="{{newslist.newsimage.url}}"/>
+            </div>
+            <div class='project-teaser-box'>
+              <p class='teaser-name' style="font-size:20px">
+                {{newslist.headline}} 
+              </p>
+              <p class='see-details'>
+                자세한 내용 보기 →
+              </p>
+            </div>
+          </div>
+        </a>
+        <div class='teaser-domains'>
+          <span class='teaser-domain-tag'>{{newslist.tags}}</span>
+          <span class='teaser-domain-tag'>{{newslist.Date}}</span>
+        </div>
+        <h3 class='project-teaser-name'>
+          <a class="project-teaser-name__link" href="{% url 'korsinglenews' pk=newslist.pk %}">{{newslist.headline}}</a>
+        </h3>
+        <h4>
+          <span class='accent'>
+            {{newslist.summary}}
+          </span>
+        </h4>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <section class='cta-box centered'>
+    <div class='cta-box-card'>
+      <h2>여러분의 아이디어에 대해 이야기해 보세요!</h2>
+      <a class="btn-round btn-primary" href="{% url 'korContact' %}">문의하기</a>
+    </div>
+  </section>
+
+{% endblock %}

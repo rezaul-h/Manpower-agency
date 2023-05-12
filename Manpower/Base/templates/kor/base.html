@@ -1,0 +1,431 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='ko'>
+
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+  <!-- Title  -->
+  <title>{% block title %} {% endblock %}</title>
+  <meta
+    content='A full service agile development and design agency. We build custom web and mobile products using the latest cutting edge technology'
+    name='description'>
+  <meta
+    content='web application development, mobile app development, ruby on rails developers, Agile team, ruby on rails webshop, software house kraków, offshore software house'
+    name='keywords'>
+  <meta content='Agile software development company. Digital product design - Lunar Logic' property='og:title'>
+  <meta
+    content='A full service agile development and design agency. We build custom web and mobile products using the latest cutting edge technology'
+    property='og:description'>
+  <meta content='LunarLogic.io' property='og:sitename'>
+  <meta
+    content='https://lunarlogic.io/assets/logo-lunar-logic-meta-4190a7205001040d1b53c674ea125975a373e7459552b222103d02671d8dd738.png'
+    property='og:image'>
+  <meta content='width=device-width, user-scalable=yes, initial-scale=1' name='viewport'>
+  <meta content='telephone=no' name='format-detection'>
+  <meta content='vkh1kzc0jqp3h43uw88cf2168dvo0w' name='facebook-domain-verification'>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token"
+    content="6d7LsVCV3lyAesfIW3ZIcwcFEZYMpyWCM2MwVaIvLzMX1jPKW0TL7wIrGXgjzB4LaVSvVSit0cJXlNtte2+yOg==" />
+
+
+  <!-- CSS -->
+  <link as='font/woff2' crossorigin
+    href="{% static 'font/3434F7_0_0-433ecaf79220af32083d80b36d370fc12441b9bb9cc5e126ecfbb1df55fb752d.woff2' %}"
+    rel='preload'>
+  <link as='font/woff2' crossorigin
+    href="{% static 'font/2D7A44_1_0-ef48924d2d27915400d980865fb207368cbe77539527b7237697430d9bce5c3d.woff2' %}"
+    rel='preload'>
+  <link as='font/woff2' crossorigin
+    href="{% static 'font/2D7A44_0_0-ed6f2ef93f8b8cc53b34b00ac5b37b60c604956cace650efa3c0d718530fa5ee.woff2' %}"
+    rel='preload'>
+  <link rel="stylesheet" media="all"
+    href="{% static 'css/application-3643803bec217856883fd2079f40de9c59c9814b0dd0985ce430c51dee492342.css' %}" />
+
+  <!-- Favicons -->
+  <link href="{% static 'favicons/favicon-152.png' %}" rel='apple-touch-icon-precomposed'>
+  <meta content="{% static 'favicons/favicon-144.png' %}" name='msapplication-TileImage'>
+  <link href="{% static 'favicons/favicon-152.png' %}" rel='apple-touch-icon-precomposed' sizes='152x152'>
+  <link href="{% static 'favicons/favicon-144.png' %}" rel='apple-touch-icon-precomposed' sizes='144x144'>
+  <link href="{% static 'favicons/favicon-120.png' %}" rel='apple-touch-icon-precomposed' sizes='120x120'>
+  <link href="{% static 'favicons/favicon-114.html' %}" rel='apple-touch-icon-precomposed' sizes='114x114'>
+  <link href="{% static 'favicons/favicon-72.png' %}" rel='apple-touch-icon-precomposed' sizes='72x72'>
+  <link href="{% static 'favicons/favicon-57.png' %}" rel='apple-touch-icon-precomposed'>
+  <link href="{% static 'favicons/favicon-32.png' %}" rel='icon' sizes='32x32'>
+  <style>
+    /* Style the input field */
+    input[type="date"] {
+      display: inline-block;
+      width: 50%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #333;
+      background-color: #feffff;
+    }
+    
+  </style>
+
+</head>
+
+<body>
+   <!-- Google Tag Manager (noscript) -->
+   <noscript><iframe height='0' src='https://www.googletagmanager.com/ns.html?id=GTM-T25SKSX'
+    style='display:none;visibility:hidden' width='0'></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <header class='main-header'>
+    <div class='wrapper'>
+      
+      <a class='menu-button' href='#menu' title='Menu'>메뉴</a>
+      <nav class='primary-nav' id='menu' role='navigation'>
+        <ul>
+        
+          <!-- Home -->
+          <li class='primary-nav-item'>
+            <a class="primary-nav-link" href="{% url 'korhome'%}">홈
+              <svg class='handle' preserveAspectRatio='xMidYMid meet' version='1.1' viewBox='0 0 112 13'
+                xmlns='http://www.w3.org/2000/svg'>
+                <circle class='circle' cx='7.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <circle class='circle' cx='104.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='12.228'
+                  x2='56.232' y1='6.5' y2='6.5'></line>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='99.772'
+                  x2='55.768' y1='6.5' y2='6.5'></line>
+              </svg>
+
+            </a></li>
+          <!-- Services -->
+          <li class='primary-nav-item'>
+            <a class="primary-nav-link" href="{% url 'korservice'%}">서비스
+              <svg class='handle' preserveAspectRatio='xMidYMid meet' version='1.1' viewBox='0 0 112 13'
+                xmlns='http://www.w3.org/2000/svg'>
+                <circle class='circle' cx='7.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <circle class='circle' cx='104.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='12.228'
+                  x2='56.232' y1='6.5' y2='6.5'></line>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='99.772'
+                  x2='55.768' y1='6.5' y2='6.5'></line>
+              </svg>
+
+            </a></li>
+          <!-- Company -->
+          <li class='primary-nav-item'>
+            <a class="primary-nav-link" href="{% url 'korCompany'%}">회사
+              <svg class='handle' preserveAspectRatio='xMidYMid meet' version='1.1' viewBox='0 0 112 13'
+                xmlns='http://www.w3.org/2000/svg'>
+                <circle class='circle' cx='7.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <circle class='circle' cx='104.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='12.228'
+                  x2='56.232' y1='6.5' y2='6.5'></line>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='99.772'
+                  x2='55.768' y1='6.5' y2='6.5'></line>
+              </svg>
+
+            </a></li>
+          <!-- Find a job -->
+          <li class='primary-nav-item has-submenu'>
+            <a class="primary-nav-link" href="{% url 'korjobshow'%}">채용 정보 찾기
+              <svg class='handle' preserveAspectRatio='xMidYMid meet' version='1.1' viewBox='0 0 112 13'
+                xmlns='http://www.w3.org/2000/svg'>
+                <circle class='circle' cx='7.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <circle class='circle' cx='104.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='12.228'
+                  x2='56.232' y1='6.5' y2='6.5'></line>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='99.772'
+                  x2='55.768' y1='6.5' y2='6.5'></line>
+              </svg>
+
+            </a>
+            <ul class='secondary-nav'>
+              <li class='secondary-nav-item'>
+                <a class="secondary-nav-link" href="{% url 'korjobshow'%}">오프닝 표시
+                </a></li>
+              <li class='secondary-nav-item'>
+                <a class="secondary-nav-link" href="{% url 'kordev post'%}"> 프로필 만들기
+                </a></li>
+            </ul>
+          </li>
+          <!-- Find Developer -->
+          <li class='primary-nav-item has-submenu'>
+            <a class="primary-nav-link" href="{% url 'kordevshow'%}">개발자 찾기
+              <svg class='handle' preserveAspectRatio='xMidYMid meet' version='1.1' viewBox='0 0 112 13'
+                xmlns='http://www.w3.org/2000/svg'>
+                <circle class='circle' cx='7.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <circle class='circle' cx='104.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='12.228'
+                  x2='56.232' y1='6.5' y2='6.5'></line>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='99.772'
+                  x2='55.768' y1='6.5' y2='6.5'></line>
+              </svg>
+
+            </a>
+            <ul class='secondary-nav'>
+              <li class='secondary-nav-item'>
+                <a class="secondary-nav-link" href="{% url 'kordevshow'%}">개발자 프로필 보기
+                </a></li>
+              <li class='secondary-nav-item'>
+                <a class="secondary-nav-link" href="{% url 'korJob Post'%}"> 채용 공고 게시
+                </a></li>
+            </ul>
+          </li>
+          <!-- news -->
+          <li class='primary-nav-item'>
+            <a class="primary-nav-link" href="{% url 'korshownews' %}">공지사항 게시판
+              <svg class='handle' preserveAspectRatio='xMidYMid meet' version='1.1' viewBox='0 0 112 13'
+                xmlns='http://www.w3.org/2000/svg'>
+                <circle class='circle' cx='7.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <circle class='circle' cx='104.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='12.228'
+                  x2='56.232' y1='6.5' y2='6.5'></line>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='99.772'
+                  x2='55.768' y1='6.5' y2='6.5'></line>
+              </svg>
+
+            </a></li>
+          <!-- Contact us -->
+          <li class='primary-nav-item'>
+            <a class="primary-nav-link" href="{% url 'korContact'%}">문의하기
+              <svg class='handle' preserveAspectRatio='xMidYMid meet' version='1.1' viewBox='0 0 112 13'
+                xmlns='http://www.w3.org/2000/svg'>
+                <circle class='circle' cx='7.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <circle class='circle' cx='104.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='12.228'
+                  x2='56.232' y1='6.5' y2='6.5'></line>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='99.772'
+                  x2='55.768' y1='6.5' y2='6.5'></line>
+              </svg>
+
+            </a></li>
+             <!-- Signup -->
+          {% if user.is_authenticated %}
+          <li class='primary-nav-item'>
+            <a class="primary-nav-link" href="{% url 'korDevSignout'%}">로그아웃
+              <svg class='handle' preserveAspectRatio='xMidYMid meet' version='1.1' viewBox='0 0 112 13'
+                xmlns='http://www.w3.org/2000/svg'>
+                <circle class='circle' cx='7.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <circle class='circle' cx='104.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='12.228'
+                  x2='56.232' y1='6.5' y2='6.5'></line>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='99.772'
+                  x2='55.768' y1='6.5' y2='6.5'></line>
+              </svg>
+
+            </a></li>
+          {% else %}
+          <li class='primary-nav-item has-submenu'>
+            <a class="primary-nav-link" href="{% url 'korDevSignUp'%}">가입/로그인
+              <svg class='handle' preserveAspectRatio='xMidYMid meet' version='1.1' viewBox='0 0 112 13'
+                xmlns='http://www.w3.org/2000/svg'>
+                <circle class='circle' cx='7.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <circle class='circle' cx='104.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='12.228'
+                  x2='56.232' y1='6.5' y2='6.5'></line>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='99.772'
+                  x2='55.768' y1='6.5' y2='6.5'></line>
+              </svg>
+
+            </a>
+            <ul class='secondary-nav'>
+              <li class='secondary-nav-item'>
+                <a class="secondary-nav-link" href="{% url 'korDevSignUp'%}">개발자 계정
+                </a></li>
+              <li class='secondary-nav-item'>
+                <a class="secondary-nav-link" href="{% url 'korrecruiterSignUp'%}"> 채용 담당자 계정
+                </a></li>
+            </ul>
+          </li>
+          {% endif %}
+
+           <!-- Language -->
+           <li class='primary-nav-item has-submenu'>
+            <a class="primary-nav-link" href="{% url 'home'%}">Language(EN)
+              <svg class='handle' preserveAspectRatio='xMidYMid meet' version='1.1' viewBox='0 0 112 13'
+                xmlns='http://www.w3.org/2000/svg'>
+                <circle class='circle' cx='7.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <circle class='circle' cx='104.5' cy='6.5' fill='none' r='4.5' stroke-miterlimit='10' stroke-width='2'
+                  stroke='#00AEEF'></circle>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='12.228'
+                  x2='56.232' y1='6.5' y2='6.5'></line>
+                <line class='line' fill='none' stroke-miterlimit='10' stroke-width='1.5' stroke='#00AEEF' x1='99.772'
+                  x2='55.768' y1='6.5' y2='6.5'></line>
+              </svg>
+
+            </a>
+            <ul class='secondary-nav'>
+              <li class='secondary-nav-item'>
+                <a class="secondary-nav-link" href="{% url 'korhome'%}">Language(KOR)
+                </a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  {% block content %}
+  {% endblock %}
+
+
+
+  <footer>
+    <div class='footer-wrapper wrapper'>
+      <div class='footer-column nav-column'>
+        <nav class='footer-nav'>
+          <ul class='footer-nav-list'>
+            <li class='footer-nav-item'>
+              <a href="{% url 'korhome'%}">홈</a>
+            </li>
+            <li class='footer-nav-item'>
+              <a href="{% url 'korservice'%}">서비스</a>
+            </li>
+            <li class='footer-nav-item'>
+              <a href="{% url 'korCompany'%}">회사</a>
+            </li>
+            <li class='footer-nav-item'>
+              <a href="{% url 'korshownews' %}">뉴스</a>
+            </li>
+          </ul>
+          <ul class='footer-nav-list'>
+            <li class='footer-nav-item'>
+              <a href="{% url 'korjobshow'%}">채용 공고 보기</a>
+            </li>
+            <li class='footer-nav-item'>
+              <a href="{% url 'kordev post'%}">채용 지원</a>
+            </li>
+            <li class='footer-nav-item'>
+              <a href="{% url 'kordevshow'%}">개발자 프로필</a>
+            </li>
+            <li class='footer-nav-item'>
+              <a href="{% url 'korJob Post'%}">채용 안내문 게시</a>
+            </li>
+          </ul>
+        </nav>
+        <a class="btn-round btn-primary footer-estimate-btn" href="{% url 'korContact'%}">문의하기</a>
+      </div>
+      <div class='footer-column'>
+        <h3 class='footer-title'>우리를 찾아</h3>
+        <div class='footer-address' itemprop='location' itemscope='' >
+          <div class='direct-address'>
+            <span itemprop='name'>We Can Work</span>
+            <div itemprop='address' itemscope='' >
+              <span itemprop='streetAddress'>87 Dong 2701 Ho</span>
+              <br>
+              <span itemprop='postalCode'>7, Eunhasu-ro 377, Jung-gu, Incheon</span>
+              <span itemprop='addressLocality'>Republic of Korea</span>
+              <br>
+            </div>
+            <div itemprop='geo' itemscope='' >
+              <meta content='50.0584332' itemprop='latitude'>
+              <meta content='19.9260556' itemprop='longitude'>
+              <a href='https://www.google.pl/maps/place/Lunar+Logic/@50.0584492,19.9260765,17z/data=!4m7!1m4!3m3!1s0x47165b0b4b0d28bf:0x80ecfbef796ab5a3!2saleja+Zygmunta+Krasińskiego+17,+33-332+Kraków!3b1!3m1!1s0x47165b0b4b13ee4b:0xfa2893e31da16880'
+                rel='noopener' target='_blank'>Show on a map</a>
+            </div>
+          </div>
+          <div class='direct-contact'>
+            <img alt="Agata" class="footer-contact-photo" src="{% static 'images/ceo.png' %}" />
+            <p class='footer-item'>
+              <a href='mailto:agata.neale@lunarlogic.io?cc=contact@lunarlogic.io'
+                itemprop='email'>jaehyeok.wcw@gmail.com</a>
+            </p>
+            <p class='footer-item'>
+              <a href='tel:+48508694400' itemprop='telephone'> +82-10-7276-6675</a>
+            </p>
+          </div>
+        </div>
+        <ul class='social-media'>
+          
+          <li class='social-media-item'>
+            <a target="_blank" rel="noopener nofollow" class="social-media-link twitter"
+              href="">Twitter</a>
+          </li>
+          <li class='social-media-item'>
+            <a target="_blank" rel="noopener nofollow" class="social-media-link facebook"
+              href="">Facebook</a>
+          </li>
+          <li class='social-media-item'>
+            <a target="_blank" rel="noopener nofollow" class="social-media-link linkedin"
+              href="">LinkedIn</a>
+          </li>
+          <li class='social-media-item'>
+            <a target="_blank" rel="noopener nofollow" class="social-media-link github"
+              href="">Github</a>
+          </li>
+        
+        </ul>
+      </div>
+      <div class='copyright'>
+        © 2023
+        <span itemprop='name'>We Can Work - <a itemprop="url" title="Offshore Agile Software House"
+            href="{url 'korhome'}">www.wecanwork.info</a>.</span>
+        <span>All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="{% static 'js/required-c1ba5967a090d68326a34fa5064d20ec0ad1137e5b4baedb71571c43fd4366ef.js' %}"></script>
+  <script src="{% static 'js/application-6b07ddf6d7947dc7f4b5c1d66b50c121604ff785d257205817f37c8e2416b012.js' %}"
+    defer="defer">
+  </script>
+  <!-- <script src="{% static 'js/portfolio_show-1ca8fab38502c84b3ea73b54c7edd0316f45c1e32184526fa88628c56df5a60f.js' %}"
+    async="async"></script> -->
+  <script src="{% static 'js/required-c1ba5967a090d68326a34fa5064d20ec0ad1137e5b4baedb71571c43fd4366ef.js' %}"></script>
+  <script src="{% static 'js/application-6b07ddf6d7947dc7f4b5c1d66b50c121604ff785d257205817f37c8e2416b012.js' %}"
+    defer="defer">
+  </script>
+  <script src="{% static 'js/team-debab401f0cc619638a3eccd3d7cd7dce3a276b64fbb08af8f5804f0263e59e6.js' %}"
+    async="async"></script>
+
+
+  <script>
+    _linkedin_partner_id = "4120634";
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script>
+  <script>
+    (function (l) {
+      if (!l) {
+        window.lintrk = function (a, b) {
+          window.lintrk.q.push([a, b])
+        };
+        window.lintrk.q = []
+      }
+      var s = document.getElementsByTagName("script")[0];
+      var b = document.createElement("script");
+      b.type = "text/javascript";
+      b.async = true;
+      b.src = "{% static 'js/insight.min.js' %}";
+      s.parentNode.insertBefore(b, s);
+    })(window.lintrk);
+  </script>
+  <noscript>
+    <img alt='' height='1' src='https://px.ads.linkedin.com/collect/?pid=4120634&amp;fmt=gif' style='display:none;'
+      width='1'>
+  </noscript>
+</body>
+
+<!-- Mirrored from lunarlogic.io/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Mar 2023 21:25:14 GMT -->
+
+</html>

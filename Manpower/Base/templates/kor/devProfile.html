@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "kor/base.html" %}
 {% load static %}
 {% block title %} Developer Profile | We Can Work
 {% endblock %}
@@ -9,12 +9,11 @@
   <div class='project-hero wrapper columns'>
     <div class='project-hero__info'>
       ←&nbsp;&nbsp;
-      <a class='project-hero__portfolio-link u-underlined-hover-link' href="{% url 'devshow' %}">Go back to all
-        all developer list</a>
+      <a class='project-hero__portfolio-link u-underlined-hover-link' href="{% url 'kordevshow' %}">모두로 돌아가기 모든 개발자 목록</a>
       <h1> {{DeveloperProfiles.first_name}} {{DeveloperProfiles.last_name}} </h1>
       <!-- Contact -->
       <div class='project-domains'>
-        <h2 class='project-domains__heading'>Contact information</h2>
+        <h2 class='project-domains__heading'>연락처 정보</h2>
         <div class='project-domains__item'>
           <a href="tel:{{DeveloperProfiles.phone_number}}">{{DeveloperProfiles.phone_number}}</a>
         </div>
@@ -24,7 +23,7 @@
       </div>
       <!-- Social media -->
       <div class='project-domains'>
-        <h2 class='project-domains__heading'>Social media</h2>
+        <h2 class='project-domains__heading'>소셜 미디어</h2>
         <div class='project-domains__item'>
           <a href="{{DeveloperProfiles.linkedin_link}}">Linkedin</a>
         </div>
@@ -52,14 +51,14 @@
 <section class='project-quote'>
   <div class='testimonial-box project-quote__box'>
     <p class='project-quote__author'>
-      <strong>Bechelors Information</strong>
+      <strong>Bachelor's Information</strong>
       <br>
       <span>{{DeveloperProfiles.institute1}}, {{DeveloperProfiles.degree1}}</span>
       <br>
-      <span>Session: {{DeveloperProfiles.duration1}}</span>
+      <span>세션: {{DeveloperProfiles.duration1}}</span>
       <br>
       <span>
-        CGPA (Out of 4.00): {{DeveloperProfiles.result1}}
+        CGPA(4.00점 만점): {{DeveloperProfiles.result1}}
       </span>
     </p>
     <br>
@@ -68,37 +67,39 @@
       <br>
       <span>{{DeveloperProfiles.institute2}}, {{DeveloperProfiles.degree2}}</span>
       <br>
-      <span>Session: {{DeveloperProfiles.duration2}}</span>
+      <span>세션: {{DeveloperProfiles.duration2}}</span>
       <br>
       <span>
-        CGPA (Out of 4.00): {{DeveloperProfiles.result2}}
+        CGPA(4.00점 만점): {{DeveloperProfiles.result2}}
       </span>
     </p>
     <br>
     <p class='project-quote__author'>
-      <strong>Download {{DeveloperProfiles.first_name}}'s CV</strong>
+      <strong>다운로드 {{DeveloperProfiles.first_name}}'s CV</strong>
       <br>
       <span>
         <div class='project-domains__item'>
-          <a href="{% url 'download' pk=DeveloperProfiles.pk %}">Download PDF</a>
+        
+          <a href="{% url 'kordownload' pk=DeveloperProfiles.pk %}">다운로드 PDF</a>
         </div>
       </span>
     </p>
   </div>
 </section>
 
+
 <section class='project-goals wrapper vertical-padding'>
-  <h2 class='project-goals__heading'>Skills</h2>
+  <h2 class='project-goals__heading'>스킬</h2>
   <div class='columns'>
     <div class='column'>
       <ul class='project-goals-list'>
-        <li class='project-goals-list__item'><strong>Speciality:</strong> {{DeveloperProfiles.Speciality1}},{{DeveloperProfiles.Speciality2}},{{DeveloperProfiles.Speciality2}},{{DeveloperProfiles.Speciality4}}</li>
-        <li class='project-goals-list__item'><strong>Languages: </strong> {{DeveloperProfiles.Languages1}},{{DeveloperProfiles.Languages2}},{{DeveloperProfiles.Languages3}},{{DeveloperProfiles.Languages4}}</li>
-        <li class='project-goals-list__item'><strong>Tools: </strong> {{DeveloperProfiles.Tools1}},{{DeveloperProfiles.Tools2}},{{DeveloperProfiles.Tools3}},{{DeveloperProfiles.Tools4}}</li>
-        <li class='project-goals-list__item'><strong>Interpersonal:</strong> {{DeveloperProfiles.Interpersonal1}},{{DeveloperProfiles.Interpersonal2}},{{DeveloperProfiles.Interpersonal3}},{{DeveloperProfiles.Interpersonal4}}</li>
+        <li class='project-goals-list__item'><strong>스페셜티:</strong> {{DeveloperProfiles.Speciality1}},{{DeveloperProfiles.Speciality2}},{{DeveloperProfiles.Speciality2}},{{DeveloperProfiles.Speciality4}}</li>
+        <li class='project-goals-list__item'><strong>프로그래밍 언어: </strong> {{DeveloperProfiles.Languages1}},{{DeveloperProfiles.Languages2}},{{DeveloperProfiles.Languages3}},{{DeveloperProfiles.Languages4}}</li>
+        <li class='project-goals-list__item'><strong>도구: </strong> {{DeveloperProfiles.Tools1}},{{DeveloperProfiles.Tools2}},{{DeveloperProfiles.Tools3}},{{DeveloperProfiles.Tools4}}</li>
+        <li class='project-goals-list__item'><strong>대인관계:</strong> {{DeveloperProfiles.Interpersonal1}},{{DeveloperProfiles.Interpersonal2}},{{DeveloperProfiles.Interpersonal3}},{{DeveloperProfiles.Interpersonal4}}</li>
       </ul>
       <div class='project-details'>
-        <h2 class='project-goals__heading'>Extracurricular Activities</h2>
+        <h2 class='project-goals__heading'>과외 활동</h2>
         
         <div class='project-details__tag'>{{DeveloperProfiles.Activities1}}
           <!-- <a href="{{DeveloperProfiles.Certifications1link}}">{{DeveloperProfiles.Activities1}}</a> -->
@@ -119,7 +120,7 @@
     </div>
     <div class='column'>
       <div class='project-details'>
-        <h2 class='project-goals__heading'>Research Works</h2>
+        <h2 class='project-goals__heading'>연구 작업</h2>
         
         <div class='project-details__tag'>
           <a href="https://doi.org/{{DeveloperProfiles.paper1doi}}">{{DeveloperProfiles.paper1name}}</a>
@@ -134,7 +135,7 @@
         </div>
       </div>
       <div class='project-details'>
-        <h2 class='project-goals__heading'>Certifications</h2>
+        <h2 class='project-goals__heading'>인증</h2>
         
         <div class='project-details__tag'>
           <a href="{{DeveloperProfiles.Certifications1link}}">{{DeveloperProfiles.Certifications1name}}</a>
@@ -156,7 +157,7 @@
 <section class='company-our-stats'>
   <div class='wrapper'>
     <h2 class='section-title'>
-      Work Experience
+      업무 경험
     </h2>
     <div class='columns'>
       <div class='column'>
@@ -167,7 +168,7 @@
                  
         </span>
         <span class='break-word stats-title'style="font-size: 15px;">
-          Duration: {{DeveloperProfiles.start1}}-{{DeveloperProfiles.end1}}
+          기간: {{DeveloperProfiles.start1}}-{{DeveloperProfiles.end1}}
         </span>
         <span class='break-word stats-title'style="font-size: 15px;">
           <ul class='project-goals-list'>
@@ -186,7 +187,7 @@
                  
         </span>
         <span class='break-word stats-title'style="font-size: 15px;">
-          Duration: {{DeveloperProfiles.start2}}-{{DeveloperProfiles.end2}}
+          기간: {{DeveloperProfiles.start2}}-{{DeveloperProfiles.end2}}
         </span>
         <span class='break-word stats-title'style="font-size: 15px;">
           <ul class='project-goals-list'>
@@ -203,7 +204,7 @@
 
 <section class='project-flow-container'>
   <div class='project-flow wrapper vertical-padding'>
-    <h2 class='project-flow__heading centered'>Major projects</h2>
+    <h2 class='project-flow__heading centered'>주요 프로젝트</h2>
     <div class='columns project-flow__steps'>
       <div class='column project-flow__step'>
         <div class='project-flow__step-number'>1</div>
@@ -223,8 +224,8 @@
 
 <section class='cta-box centered'>
   <div class='cta-box-card'>
-    <h2>Let’s talk about your&nbsp;idea!</h2>
-    <a class="btn-round btn-primary" href="{% url 'Contact' %}">Contact us</a>
+    <h2>여러분의 아이디어에 대해 이야기해 보세요!</h2>
+    <a class="btn-round btn-primary" href="{% url 'korContact' %}">Contact us</a>
   </div>
 </section>
 {% endblock %}
