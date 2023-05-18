@@ -6,21 +6,30 @@ from django.contrib import messages
 from .models import ContactUsModel,CustomDeveloperUser,DeveloperData,JobData,CustomRecruitersUser,NewsModel
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect,HttpResponseNotFound
+from django.http import HttpResponseRedirect,HttpResponseNotFound,HttpResponseBadRequest
 from datetime import datetime
 from django.http import FileResponse
 import os
 
 # Create your views here.
-def Home(request):
-    Jobdatas = JobData.objects.all()
-    Developers = DeveloperData.objects.all()
-    newslists = NewsModel.objects.all()
-    return render(request, "index.html", {'Jobdatas':Jobdatas, 'Developers':Developers, 'newslists':newslists})
 
+def Home(request):
+    if request.method == 'GET':
+        Jobdatas = JobData.objects.all()
+        Developers = DeveloperData.objects.all()
+        newslists = NewsModel.objects.all()
+        return render(request, "index.html", {'Jobdatas': Jobdatas, 'Developers': Developers, 'newslists': newslists})
+    else:
+        # Handle invalid request method (e.g., POST, PUT, DELETE)
+        return HttpResponseBadRequest("Invalid request method")
+    
 def news(request):
-    newslists = NewsModel.objects.all()
-    return render(request, "news.html", {'newslists':newslists})
+    if request.method == 'GET':
+        newslists = NewsModel.objects.all()
+        return render(request, "news.html", {'newslists': newslists})
+    else:
+        # Handle invalid request method (e.g., POST, PUT, DELETE)
+        return HttpResponseBadRequest("Invalid request method")
 
 def singlenews(request,pk):
     Newslists = get_object_or_404(NewsModel, pk=pk)
@@ -29,33 +38,60 @@ def singlenews(request,pk):
 def devRegister(request):
     if request.method == 'POST':
         dev_name = request.POST.get('developer_name')
-        dev_username =  request.POST.get('developer_username')
+        dev_username = request.POST.get('developer_username')
         email = request.POST.get('developer_email')
         password = request.POST.get('developer_password')
-        dev_user = CustomDeveloperUser(DevName= dev_name, UserName= dev_username, email=email, password=password)
-        dev_user.save()
-        # Create a new user
-        my_user = User.objects.create_user(username=dev_username,email=email, password=password)
-        my_user.save()
 
-        return redirect('DevSignin')
+        if dev_name and dev_username and email and password:
+            # Check if the username is already taken
+            if CustomDeveloperUser.objects.filter(UserName=dev_username).exists():
+                error_message = "Username is already taken."
+                return render(request, 'dev_signup.html', {'error_message': error_message})
+
+            # Check if the email is already registered
+            if CustomDeveloperUser.objects.filter(email=email).exists():
+                error_message = "Email is already registered."
+                return render(request, 'dev_signup.html', {'error_message': error_message})
+
+            # Create and save the CustomDeveloperUser
+            dev_user = CustomDeveloperUser(DevName=dev_name, UserName=dev_username, email=email, password=password)
+            dev_user.save()
+
+            # Create and save the User
+            my_user = User.objects.create_user(username=dev_username, email=email, password=password)
+            my_user.save()
+
+            return redirect('DevSignin')
+        else:
+            error_message = "Please fill in all the required fields."
+            return render(request, 'dev_signup.html', {'error_message': error_message})
     else:
         return render(request, 'dev_signup.html')
 
 
 def devSignIn(request):
     if request.method == 'POST':
-        username = request.POST.get('signin_username')
+        dev_username = request.POST.get('signin_username')
         password = request.POST.get('signin_password')
-        user=authenticate(request,username=username,password=password)
-        if user is not None:
-            login(request,user)
-            print("got here")
-            return redirect('home')
-        else:
-            return HttpResponse ("Username or Password is incorrect!!!")
+
+        try:
+            dev_user = CustomDeveloperUser.objects.get(UserName=dev_username)
+            if dev_username==dev_user.UserName and password==dev_user.password:
+                # Authentication successful
+                user=authenticate(request,username=dev_username,password=password)
+                login(request,user)
+                request.session['user_id'] = dev_user.id
+                return redirect('home')
+            else:
+                # Invalid password
+                error_message = "Invalid username or password."
+        except CustomDeveloperUser.DoesNotExist:
+            # User not found
+            error_message = "Invalid username or password."
+
+        return render(request, 'dev_signin.html', {'error_message': error_message})
     else:
-        return render (request,'dev_signin.html')
+        return render(request, 'dev_signin.html')
     
 def DevLogoutPage(request):
     logout(request)
@@ -66,9 +102,14 @@ def Contact(request):
         name = request.POST.get('contact_form_name')
         email = request.POST.get('contact_form_email')
         message = request.POST.get('contact_form_body')
-        contact = ContactUsModel(name=name, email=email, message=message)
-        contact.save()
-        return HttpResponse('Thank you for contacting us!')
+
+        if name and email and message:
+            contact = ContactUsModel(name=name, email=email, message=message)
+            contact.save()
+            return HttpResponse('Thank you for contacting us!')
+        else:
+            error_message = "Please fill in all the required fields."
+            return render(request, 'contact.html', {'error_message': error_message})
     else:
         return render(request, 'contact.html')
 
@@ -78,7 +119,6 @@ def Company(request):
 def jobPost(request):
     if request.method == 'POST':
         dead = request.POST.get('deadline')
-        type(dead)
         jobdata = JobData(
           job_title = request.POST.get('job_title'),
           deadline = datetime.strptime(dead, '%Y-%m-%d'),
@@ -124,19 +164,12 @@ def jobPost(request):
     else:
         return render(request, "jobpost.html")
     
-
 def jobProfile(request, pk):
     recruiterProfiles = get_object_or_404(JobData, pk=pk)
     return render(request, "recruiterProfile.html", {'recruiterProfiles':recruiterProfiles})
 
 def service(request):
     return render(request, "services.html")
-
-def signup(request):
-    return render(request, "signup.html")
-
-def signin(request):
-    return render(request, "signin.html")
                 
 def devpost(request):
     if request.method == 'POST':
@@ -233,8 +266,6 @@ def devpost(request):
                                  Certifications1name=Certifications1name,Certifications2name=Certifications2name,Certifications3name=Certifications3name, Certifications1link=Certifications1link,Certifications2link=Certifications2link,Certifications3link=Certifications3link,
                                  Activities1=Activities1,Activities2=Activities2,Activities3=Activities3,Activities4=Activities4,job_form_cv=job_form_cv                                
                                  )
-        # dev_data.DevUser
-        # dev_data.DevUser = request.user
 
         dev_data.save()
         return redirect('home')
@@ -292,26 +323,34 @@ def recruiterRegister(request):
         return redirect('recruiterSignin')
     else:
         return render(request, 'recruiter_signup.html')
-
-
+    
 def recruiterSignIn(request):
     if request.method == 'POST':
-        username = request.POST.get('signin_username')
+        dev_username = request.POST.get('signin_username')
         password = request.POST.get('signin_password')
-        recruiter_user=authenticate(request,username=username,password=password)
-        if recruiter_user is not None:
-            login(request,recruiter_user)
-            return redirect('home')
-        else:
-            return HttpResponse ("Username or Password is incorrect!!!")
+        try:
+            dev_user = CustomRecruitersUser.objects.get(RecruitersUserName=dev_username)
+            if dev_username==dev_user.RecruitersUserName and password==dev_user.Recruiterspassword:
+                # Authentication successful
+                user=authenticate(request,username=dev_username,password=password)
+                login(request,user)
+                request.session['user_id'] = dev_user.id
+                return redirect('home')
+            else:
+                # Invalid password
+                error_message = "Invalid username or password."
+        except CustomRecruitersUser.DoesNotExist:
+            # User not found
+            error_message = "Invalid username or password."
+
+        return render(request, 'recruiter_signin.html', {'error_message': error_message})
     else:
-        return render (request,'recruiter_signin.html')
-    
+        return render(request, 'recruiter_signin.html')
+
+
 def recruiterLogoutPage(request):
     logout(request)
     return redirect('recruiterSignin')
-
-
 
 # Korean Version #
 def korHome(request):
@@ -327,37 +366,63 @@ def kornews(request):
 def korsinglenews(request,pk):
     Newslists = get_object_or_404(NewsModel, pk=pk)
     return render(request, "kor/singlenews.html", {'Newslists':Newslists})
-
+    
 def kordevRegister(request):
     if request.method == 'POST':
         dev_name = request.POST.get('developer_name')
-        dev_username =  request.POST.get('developer_username')
+        dev_username = request.POST.get('developer_username')
         email = request.POST.get('developer_email')
         password = request.POST.get('developer_password')
-        dev_user = CustomDeveloperUser(DevName= dev_name, UserName= dev_username, email=email, password=password)
-        dev_user.save()
-        # Create a new user
-        my_user = User.objects.create_user(username=dev_username,email=email, password=password)
-        my_user.save()
 
-        return redirect('korDevSignin')
+        if dev_name and dev_username and email and password:
+            # Check if the username is already taken
+            if CustomDeveloperUser.objects.filter(UserName=dev_username).exists():
+                error_message = "Username is already taken."
+                return render(request, 'kor/dev_signup.html', {'error_message': error_message})
+
+            # Check if the email is already registered
+            if CustomDeveloperUser.objects.filter(email=email).exists():
+                error_message = "Email is already registered."
+                return render(request, 'kor/dev_signup.html', {'error_message': error_message})
+
+            # Create and save the CustomDeveloperUser
+            dev_user = CustomDeveloperUser(DevName=dev_name, UserName=dev_username, email=email, password=password)
+            dev_user.save()
+
+            # Create and save the User
+            my_user = User.objects.create_user(username=dev_username, email=email, password=password)
+            my_user.save()
+
+            return redirect('korDevSignin')
+        else:
+            error_message = "Please fill in all the required fields."
+            return render(request, 'kor/dev_signup.html', {'error_message': error_message})
     else:
         return render(request, 'kor/dev_signup.html')
 
-
 def kordevSignIn(request):
     if request.method == 'POST':
-        username = request.POST.get('signin_username')
+        dev_username = request.POST.get('signin_username')
         password = request.POST.get('signin_password')
-        user=authenticate(request,username=username,password=password)
-        if user is not None:
-            login(request,user)
-            print("got here")
-            return redirect('korhome')
-        else:
-            return HttpResponse ("Username or Password is incorrect!!!")
+
+        try:
+            dev_user = CustomDeveloperUser.objects.get(UserName=dev_username)
+            if dev_username==dev_user.UserName and password==dev_user.password:
+                # Authentication successful
+                user=authenticate(request,username=dev_username,password=password)
+                login(request,user)
+                request.session['user_id'] = dev_user.id
+                return redirect('korhome')
+            else:
+                # Invalid password
+                error_message = "Invalid username or password."
+        except CustomDeveloperUser.DoesNotExist:
+            # User not found
+            error_message = "Invalid username or password."
+
+        return render(request, 'kor/dev_signin.html', {'error_message': error_message})
     else:
-        return render (request,'kor/dev_signin.html')
+        return render(request, 'kor/dev_signin.html')
     
 def korDevLogoutPage(request):
     logout(request)
@@ -595,20 +660,29 @@ def korrecruiterRegister(request):
     else:
         return render(request, 'kor/recruiter_signup.html')
 
-
 def korrecruiterSignIn(request):
     if request.method == 'POST':
-        username = request.POST.get('signin_username')
+        dev_username = request.POST.get('signin_username')
         password = request.POST.get('signin_password')
-        recruiter_user=authenticate(request,username=username,password=password)
-        if recruiter_user is not None:
-            login(request,recruiter_user)
-            return redirect('korhome')
-        else:
-            return HttpResponse ("Username or Password is incorrect!!!")
+        try:
+            dev_user = CustomRecruitersUser.objects.get(RecruitersUserName=dev_username)
+            if dev_username==dev_user.RecruitersUserName and password==dev_user.Recruiterspassword:
+                # Authentication successful
+                user=authenticate(request,username=dev_username,password=password)
+                login(request,user)
+                request.session['user_id'] = dev_user.id
+                return redirect('korhome')
+            else:
+                # Invalid password
+                error_message = "Invalid username or password."
+        except CustomRecruitersUser.DoesNotExist:
+            # User not found
+            error_message = "Invalid username or password."
+
+        return render(request, 'kor/recruiter_signin.html', {'error_message': error_message})
     else:
-        return render (request,'kor/recruiter_signin.html')
-    
+        return render(request, 'kor/recruiter_signin.html')
+
 def korrecruiterLogoutPage(request):
     logout(request)
     return redirect('korrecruiterSignin')
