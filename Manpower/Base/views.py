@@ -271,7 +271,6 @@ def download(request, pk):
     response['Content-Disposition'] = f'attachment; filename="{document.job_form_cv.name}"'
     return response
 
-
 def downloadcopy(request, pk):
     document = get_object_or_404(JobData, pk=pk)
     response = HttpResponse(document.circular, content_type='application/pdf')
